@@ -1,6 +1,8 @@
 import ModelMachine from "../database/mongo/models/machine";
 import path from "path";
 import fs from "fs";
+import { fieldValidation } from "../utils/validations";
+
 module.exports = app => ({
   async store(req, res) {
     const files = req.files;
@@ -13,6 +15,15 @@ module.exports = app => ({
       mainFeatures,
       specifications
     } = req.body;
+    const fail = fieldValidation({
+      name,
+      manufacturer,
+      description,
+      category,
+      mainFeatures
+    });
+    if (!fail.return)
+      return res.status(400).send(`${fail.message} ${fail.field}`);
     const machine = new ModelMachine();
     machine.name = name;
     machine.manufacturer = manufacturer;
@@ -87,10 +98,20 @@ module.exports = app => ({
       specifications
     } = req.body;
     const files = req.files;
-    console.log("FILES => ", files);
+
     if (!id) return res.status(400).send("ID não informado");
-    const machine = ModelMachine.findById(id);
+    const machine = await ModelMachine.findById(id);
     if (machine) {
+      let fail = fieldValidation({
+        name,
+        manufacturer,
+        category,
+        description,
+        mainFeatures
+      });
+      if (!fail.return)
+        return res.status(400).send(`${fail.message} ${fail.field}`);
+
       machine.video = video;
       machine.name = name;
       machine.manufacturer = manufacturer;
@@ -98,6 +119,34 @@ module.exports = app => ({
       machine.description = description;
       machine.mainFeatures = mainFeatures;
       machine.specifications = specifications;
+      let images = [];
+      const filePath = path.join(__dirname, "../../dist/machines/images/");
+      if (files.length > 0) {
+        let imagesFail = false;
+
+        fs.readdirSync(`${filePath}${id}`).forEach(img => {
+          files.forEach(file => {
+            const originalname = file.originalname;
+            const _originalname = file.originalname.split(".");
+            const fileFolderName = img.split(".");
+            if (fileFolderName[0] == _originalname[0]) {
+              fs.unlinkSync(`${filePath}${id}/${img}`);
+              fs.writeFileSync(`${filePath}${id}/${originalname}`, file.buffer);
+            } else {
+              fs.writeFileSync(`${filePath}${id}/${originalname}`, file.buffer);
+            }
+          });
+        });
+        images = fs.readdirSync(`${filePath}${id}`);
+        images = images.map(img => `/${id}/${img}`);
+
+        if (imagesFail)
+          return res.status(400).send("Nome da imagem é inválido");
+      }
+
+      machine.images = images;
+      const machineReturn = await machine.save();
+      return res.json(machineReturn);
     } else {
       return res.status(400).send("Máquina não encontrada");
     }

@@ -47,10 +47,16 @@ module.exports = gl => {
   gl.route("/machine")
     .post(
       multer({ storage: machineStorage }).array("machines", 5),
-      machine.store
+      machine.store 
     )
     .get(machine.index);
-  gl.route("/machine/:id").delete(machine.delete);
+
+  gl.route("/machine/:id")
+    .put(
+      multer({ storage: machineStorage }).array("machines", 5),
+      machine.update
+    )
+    .delete(machine.delete);
 };
 
 const machineStorage = multer.memoryStorage();
