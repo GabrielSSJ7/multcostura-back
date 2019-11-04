@@ -4,6 +4,7 @@ import consign from "consign";
 import cors from "cors";
 import bodyParser from "body-parser";
 import path from "path";
+import fs from "fs";
 require("./database/mongo");
 const port = process.env.PORT || 4000;
 
@@ -20,7 +21,21 @@ class App {
     });
   }
 
+  initDist() {
+    const pathDist = path.join(__dirname, "../dist/");
+    // Creating dist folder
+    fs.mkdirSync(pathDist, { recursive: true });
+    // Creating machines folder
+    fs.mkdirSync(pathDist + "machines/images/", { recursive: true });
+    // Creating icons folders
+    fs.mkdirSync(pathDist + "icons/categories/", { recursive: true });
+    fs.mkdirSync(pathDist + "icons/manufacturer/", { recursive: true });
+    //Creating logos manufacturer folder
+    fs.mkdirSync(pathDist + "logos/manufacturer/", { recursive: true });
+  }
+
   configs() {
+    this.initDist();
     this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use("/dist", express.static(path.join(__dirname, "../dist")));
