@@ -6,11 +6,12 @@ module.exports = app => ({
   async store(req, res) {
     const { name, description } = req.query;
     const file = req.file;
+
     const categories = new ModelCategories();
     categories.name = name;
     categories.description = description;
-    categories.appIcon = file.filename;
-    console.log(file);
+    if (file) categories.appIcon = file.filename;
+
     const categoriesReturn = await categories.save();
     return res.status(201).json(categoriesReturn);
   },

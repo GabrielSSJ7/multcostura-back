@@ -40,10 +40,12 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use("/dist", express.static(path.join(__dirname, "../dist")));
     consign({ verbose: false })
+      .include("./app/middleware/passport.js")
       .then("./app/controller/categories.js")
       .then("./app/controller/manufacturer.js")
       .then("./app/controller/reseller.js")
       .then("./app/controller/machine.js")
+      .then("./app/controller/user.js")
       .then("./app/routes/private.js")
       .then("./app/routes/public.js")
       .into(this.app);

@@ -111,7 +111,6 @@ module.exports = app => ({
       });
       if (!fail.return)
         return res.status(400).send(`${fail.message} ${fail.field}`);
-
       machine.video = video;
       machine.name = name;
       machine.manufacturer = manufacturer;
