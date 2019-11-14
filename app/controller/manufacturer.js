@@ -1,4 +1,5 @@
 import ModelManufacturer from "../database/mongo/models/manufacturer";
+import { fieldValidation } from "../utils/validations";
 import path from "path";
 import fs from "fs";
 
@@ -7,10 +8,13 @@ module.exports = app => ({
     const { name, description } = req.query;
     const files = req.files;
 
+    const validation = fieldValidation({ name });
+    if (!validation.return)
+      return res.status(400).send(`${validation.message} ${validation.field}`);
     const manufacturer = new ModelManufacturer();
     manufacturer.name = name;
     manufacturer.description = description;
-    console.log("FILES => ", files);
+
     if (files.logo) manufacturer.logo = files.logo[0].filename;
     if (files.icon) manufacturer.appIcon = files.icon[0].filename;
 

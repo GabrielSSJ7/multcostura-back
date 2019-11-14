@@ -47,7 +47,7 @@ module.exports = gl => {
   gl.route("/machine")
     .post(
       multer({ storage: machineStorage }).array("machines", 5),
-      machine.store 
+      machine.store
     )
     .get(machine.index);
 
