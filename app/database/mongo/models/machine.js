@@ -16,6 +16,8 @@ var Machine = new mongoose.Schema(
       web: Boolean
     },
     images: [],
+		productRef: [],
+		sewingType: "",
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "categories",

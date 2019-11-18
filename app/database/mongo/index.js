@@ -15,6 +15,7 @@ connection
     return db;
   })
   .catch(err => {
+    console.log("Error =>  ", err);
     if (err.message.code === "ETIMEDOUT") {
       mongoose.connect(dbURL, {
         useNewUrlParser: true,

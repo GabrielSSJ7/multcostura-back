@@ -46,7 +46,17 @@ module.exports = gl => {
 
   gl.route("/machine")
     .post(
-      multer({ storage: machineStorage }).array("machines", 5),
+      multer({ storage: machineStorage }).fields([
+				{ 
+					name: "machines", maxCount: 5
+				}, 
+				{ 
+					name: "productReferences", maxCount: 4 
+				},
+				{
+					name: "sewingType", maxCount: 1
+				}
+			]),
       machine.store
     )
     .get(machine.index);
