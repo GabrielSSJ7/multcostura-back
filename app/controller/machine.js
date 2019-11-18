@@ -55,36 +55,40 @@ module.exports = app => ({
 			});
 			machineCreated.images = images;
 			// PRODUCT THAT MACHINE MADES WRITE FILES
-			machineCreated.productRef = productRefFiles.map((file,i) => {
-				const mimeType = file.mimetype.split("/");
-				const filePath = path.join(__dirname, "../../dist/machines/product_ref/");
-				if (!fs.existsSync(filePath + machineCreated._id + "/"))
-					fs.mkdirSync(filePath + machineCreated._id + "/", {
-						recursive: true
-					});
-				fs.writeFileSync(
-					`${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
-					file.buffer
-				);
-				return `/${machineCreated._id}/${i}.${mimeType[1]}`;
+			if (productRefFiles) {
+				machineCreated.productRef = productRefFiles.map((file,i) => {
+					const mimeType = file.mimetype.split("/");
+					const filePath = path.join(__dirname, "../../dist/machines/product_ref/");
+					if (!fs.existsSync(filePath + machineCreated._id + "/"))
+						fs.mkdirSync(filePath + machineCreated._id + "/", {
+							recursive: true
+						});
+					fs.writeFileSync(
+						`${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
+						file.buffer
+					);
+					return `/${machineCreated._id}/${i}.${mimeType[1]}`;
 
-			})
+				})
+			}
 			// SEWING TYPE WRITE FILE
-			const sewingList = sewingTypeFiles.map((file, i) => {
-				const mimeType = file.mimetype.split("/");
-				const filePath = path.join(__dirname, "../../dist/machines/sewing_type/");
-				if (!fs.existsSync(filePath + machineCreated._id + "/"))
-					fs.mkdirSync(filePath + machineCreated._id + "/", {
-						recursive: true
-					});
-				fs.writeFileSync(
-					`${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
-					file.buffer
-				);
-				return `/${machineCreated._id}/${i}.${mimeType[1]}`;
+			if (sewingTypeFiles) {
+				const sewingList = sewingTypeFiles.map((file, i) => {
+					const mimeType = file.mimetype.split("/");
+					const filePath = path.join(__dirname, "../../dist/machines/sewing_type/");
+					if (!fs.existsSync(filePath + machineCreated._id + "/"))
+						fs.mkdirSync(filePath + machineCreated._id + "/", {
+							recursive: true
+						});
+					fs.writeFileSync(
+						`${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
+						file.buffer
+					);
+					return `/${machineCreated._id}/${i}.${mimeType[1]}`;
 
-			})
-			machineCreated.sewingType = sewingList[0] 
+				})
+				machineCreated.sewingType = sewingList[0] 
+			}
 			machineCreated = await machineCreated.save();
 		}
 		return res.json(machineCreated);
