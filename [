@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import fs from 'fs';
 import {fieldValidation} from '../utils/validations';
-import {replaceFile} from '../utils/fs';
-
+import {replaceFile} from '../utils/';
 module.exports = () => ({
   async store(req, res) {
     const {
@@ -12,6 +11,7 @@ module.exports = () => ({
       productReferences: productRefFiles,
       sewingType: sewingTypeFiles,
     } = req.files;
+    console.log('FILES => ', machinesFiles, productRefFiles, sewingTypeFiles);
     const {
       name,
       manufacturer,
@@ -162,6 +162,22 @@ module.exports = () => ({
       {
         $match: id ? {_id: mongoose.Types.ObjectId(id)} : {},
       },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'category',
+          foreignField: '_id',
+          as: 'category',
+        },
+      },
+      {
+        $lookup: {
+          from: 'manufacturer',
+          localField: 'manufacturer',
+          foreignField: '_id',
+          as: 'manufacturer',
+        },
+      },
     ]);
     if (machine) {
       machine = machine[0];
@@ -222,39 +238,16 @@ module.exports = () => ({
       machine.category = category;
       machine.description = description;
       machine.mainFeatures = mainFeatures;
-      if (specifications) machine.specifications = JSON.parse(specifications);
+      machine.specifications = specifications;
 
       if (replaceFile(files, 'machines', id)) {
         let images = [];
-        const filePath = path.join(__dirname, `../../dist/machines/images/`);
         images = fs.readdirSync(`${filePath}${id}`);
         images = images.map(img => `/${id}/${img}`);
 
         machine.images = images;
       }
 
-      if (replaceFile(files, 'productReferences', id)) {
-        let images = [];
-        const filePath = path.join(
-          __dirname,
-          `../../dist/machines/product_ref/`,
-        );
-        images = fs.readdirSync(`${filePath}${id}`);
-        images = images.map(img => `/${id}/${img}`);
-
-        machine.productRef = images;
-      }
-      if (replaceFile(files, 'sewingType', id)) {
-        let images = [];
-        const filePath = path.join(
-          __dirname,
-          `../../dist/machines/sewing_type/`,
-        );
-        images = fs.readdirSync(`${filePath}${id}`);
-        images.forEach(img => (images = `/${id}/${img}`));
-
-        machine.sewingType = images;
-      }
       const machineReturn = await machine.save();
       return res.json(machineReturn);
     } else {

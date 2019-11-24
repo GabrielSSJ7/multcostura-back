@@ -46,6 +46,7 @@ class App {
       .then("./app/controller/reseller.js")
       .then("./app/controller/machine.js")
       .then("./app/controller/user.js")
+      .then("./app/controller/images.js")
       .then("./app/routes/private.js")
       .then("./app/routes/public.js")
       .into(this.app);

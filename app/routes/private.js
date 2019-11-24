@@ -1,7 +1,13 @@
 import multer from "multer";
 import path from "path";
 module.exports = gl => {
-  const { categories, manufacturer, reseller, machine } = gl.app.controller;
+  const {
+    categories,
+    manufacturer,
+    reseller,
+    machine,
+    images
+  } = gl.app.controller;
   gl.route("/categories")
     .post(
       multer({ storage: categoriesStorage }).single("icon"),
@@ -47,26 +53,45 @@ module.exports = gl => {
   gl.route("/machine")
     .post(
       multer({ storage: machineStorage }).fields([
-				{ 
-					name: "machines", maxCount: 5
-				}, 
-				{ 
-					name: "productReferences", maxCount: 4 
-				},
-				{
-					name: "sewingType", maxCount: 1
-				}
-			]),
+        {
+          name: "machines",
+          maxCount: 5
+        },
+        {
+          name: "productReferences",
+          maxCount: 4
+        },
+        {
+          name: "sewingType",
+          maxCount: 1
+        }
+      ]),
       machine.store
     )
     .get(machine.index);
 
   gl.route("/machine/:id")
+    .get(machine.show)
     .put(
-      multer({ storage: machineStorage }).array("machines", 5),
+      multer({ storage: machineStorage }).fields([
+        {
+          name: "machines",
+          maxCount: 5
+        },
+        {
+          name: "productReferences",
+          maxCount: 4
+        },
+        {
+          name: "sewingType",
+          maxCount: 1
+        }
+      ]),
       machine.update
     )
     .delete(machine.delete);
+
+  gl.route("/images").delete(images.delete);
 };
 
 const machineStorage = multer.memoryStorage();
