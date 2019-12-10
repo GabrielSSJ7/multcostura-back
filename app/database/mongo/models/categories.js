@@ -6,7 +6,21 @@ var Categories = new mongoose.Schema(
       required: true
     },
     appIcon: String,
-    description: String
+    description: String,
+		banner: {
+			title: String,
+			description: String,
+			link: String,
+			image: [{
+				order: Number,
+				url: String
+			}],
+			txtBtn: String,
+			show: { 
+				type: Boolean,
+				default: true,
+			}
+		}
   },
   {
     collection: "categories",

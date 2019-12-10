@@ -1,8 +1,8 @@
 import ModelReseller from "../database/mongo/models/reseller";
 import { getLatAndLonByAddress } from "../utils/maps";
-module.exports = app => ({
+module.exports = () => ({
   async store(req, res) {
-    const { name, phone, email, address, maps } = req.body;
+    const { name, phone, email, address } = req.body;
     if (!name) return res.status(400).send("O nome é necessário");
     if (!phone) return res.status(400).send("O telefone é necessário");
     if (!email) return res.status(400).send("O e-mail é necessário");

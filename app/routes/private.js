@@ -6,7 +6,8 @@ module.exports = gl => {
     manufacturer,
     reseller,
     machine,
-    images
+    images,
+		banner
   } = gl.app.controller;
   gl.route("/categories")
     .post(
@@ -92,7 +93,11 @@ module.exports = gl => {
     .delete(machine.delete);
 
   gl.route("/images").delete(images.delete);
+	gl.route("/banner").post(multer({ store: memoryStorage }).single('img'), banner.store)
+	gl.route("/banner/:id/:show").put(banner.update)
 };
+
+const memoryStorage = multer.memoryStorage();
 
 const machineStorage = multer.memoryStorage();
 

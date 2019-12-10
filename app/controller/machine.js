@@ -101,10 +101,21 @@ module.exports = () => ({
   async index(req, res) {
     const {manufacturer, category} = req.query;
     let filter = {};
-    if (manufacturer) filter = {manufacturer};
-    if (category) filter = {...filter, category};
+    if (manufacturer) filter = {manufacturer: mongoose.Types.ObjectId(manufacturer)};
+    if (category) filter = {...filter, category: mongoose.Types.ObjectId(category)};
     const machines = await ModelMachine.aggregate([
-      {
+			{
+        $match: filter,
+      },
+			{
+        $lookup: {
+          from: 'manufacturer',
+          localField: 'manufacturer',
+          foreignField: '_id',
+          as: 'manufacturer',
+        },
+      },
+			{
         $lookup: {
           from: 'categories',
           localField: 'category',
@@ -114,15 +125,13 @@ module.exports = () => ({
       },
       {
         $lookup: {
-          from: 'manufacturer',
-          localField: 'manufacturer',
+          from: 'categories',
+          localField: 'category',
           foreignField: '_id',
-          as: 'manufacturer',
+          as: 'category_',
         },
       },
-      {
-        $match: filter,
-      },
+      
     ]);
     if (machines.length > 0) {
       const responseMachines = machines.map(machine => {

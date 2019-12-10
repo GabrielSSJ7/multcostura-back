@@ -1,10 +1,12 @@
-import ModelCategories from "../database/mongo/models/categories";
-import path from "path";
-import fs from "fs";
+import 'dotenv/config'
+import ModelCategories from '../database/mongo/models/categories';
+import mongoose from 'mongoose';
+import path from 'path';
+import fs from 'fs';
 
-module.exports = app => ({
+module.exports = () => ({
   async store(req, res) {
-    const { name, description } = req.query;
+    const {name, description} = req.query;
     const file = req.file;
 
     const categories = new ModelCategories();
@@ -23,45 +25,54 @@ module.exports = app => ({
         name: cat.name,
         description: cat.description,
         created_at: cat.created_at,
-        appIcon: `${process.env.STATIC_FILES_URL}icons/categories/${cat.appIcon}`
+        appIcon: `${process.env.STATIC_FILES_URL}icons/categories/${cat.appIcon}`,
       };
     });
     return res.json(resCategorties);
   },
   async show(req, res) {
-    const { id } = req.params;
-    const category = await ModelCategories.findById(id);
-
-    return res.json({
-      name: category.name,
-      description: category.description,
-      appIcon: category.appIcon,
-      createdAt: category.createdAt
-    });
+    const {id} = req.params;
+    const category = await ModelCategories.findById(
+      mongoose.Types.ObjectId(id),
+    );
+    if (category)
+      return res.json({
+        name: category.name,
+        description: category.description,
+        appIcon: category.appIcon,
+        banner: {
+          ...category.banner,
+          image: category.banner.image
+            ? `${process.env.STATIC_FILES_URL}banner/categories${category.banner.image}`
+            : null,
+        },
+        createdAt: category.createdAt,
+      });
+    return res.status(404).send('Categoria não encontrada');
   },
   async update(req, res) {
-    const { id } = req.params;
-    const { name, description } = req.query;
+    const {id} = req.params;
+    const {name, description} = req.query;
     const categories = await ModelCategories.findById(id);
     if (categories) {
       categories.name = name;
       categories.description = description;
-      console.log("file in update => ", req.file);
+      console.log('file in update => ', req.file);
       const file =
-        path.join(__dirname, "../../dist") +
-        "/icons/categories/" +
+        path.join(__dirname, '../../dist') +
+        '/icons/categories/' +
         categories.appIcon;
 
       if (fs.existsSync(file)) {
         if (req.file) {
           fs.unlinkSync(file);
           categories.appIcon = req.file.filename;
-          console.log("App icon changed true => ", categories.appIcon);
+          console.log('App icon changed true => ', categories.appIcon);
         }
       } else {
         if (req.file) {
           categories.appIcon = req.file.filename;
-          console.log("App icon changed => ", categories.appIcon);
+          console.log('App icon changed => ', categories.appIcon);
         }
       }
 
@@ -72,19 +83,19 @@ module.exports = app => ({
     }
   },
   async delete(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
     const category = await ModelCategories.findById(id);
     const file =
-      path.join(__dirname, "../../dist") +
-      "/icons/categories/" +
+      path.join(__dirname, '../../dist') +
+      '/icons/categories/' +
       category.appIcon;
 
     if (fs.existsSync(file)) {
       fs.unlinkSync(file);
     }
-    ModelCategories.deleteOne({ _id: id }, function(err) {
+    ModelCategories.deleteOne({_id: id}, function(err) {
       if (err) return res.status(500).send(err);
       return res.sendStatus(200);
     });
-  }
+  },
 });
