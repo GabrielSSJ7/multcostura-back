@@ -7,20 +7,13 @@ var Categories = new mongoose.Schema(
     },
     appIcon: String,
     description: String,
-		banner: {
-			title: String,
-			description: String,
-			link: String,
-			image: [{
-				order: Number,
-				url: String
-			}],
-			txtBtn: String,
-			show: { 
-				type: Boolean,
-				default: true,
-			}
-		}
+    bannerImages: [
+      {
+        link: String,
+        id: Number,
+        image: String
+      }
+    ]
   },
   {
     collection: "categories",

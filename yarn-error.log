@@ -1,11 +1,11 @@
 Arguments: 
-  /home/ti/.asdf/installs/nodejs/10.16.1/bin/node /usr/local/bin/yarn add body-parser
+  /home/ti/.asdf/installs/nodejs/10.16.1/bin/node /home/ti/.asdf/installs/nodejs/10.16.1/.npm/bin/yarn
 
 PATH: 
-  /home/ti/.asdf/installs/nodejs/10.16.1/bin:/home/ti/.asdf/installs/nodejs/10.16.1/.npm/bin::/home/ti/.asdf/shims:/home/ti/.asdf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ti/.dotnet/tools
+  /home/ti/.asdf/installs/nodejs/10.16.1/bin:/home/ti/.asdf/installs/nodejs/10.16.1/.npm/bin:/home/ti/.asdf/shims:/home/ti/.asdf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
-  1.17.3
+  1.21.0
 
 Node version: 
   10.16.1
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/ti/Documentos/projetos/multcostura/multcostura-back/node_modules/babel-code-frame/node_modules/js-tokens/CHANGELOG.md'
+  Error: EACCES: permission denied, unlink '/home/ti/Projects/WebProjects/multcostura/multcostura-back/node_modules/aproba/LICENSE'
 
 npm manifest: 
   {

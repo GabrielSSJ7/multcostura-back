@@ -16,13 +16,14 @@ var Reseller = new mongoose.Schema(
     address: {
       publicPlace: { type: String, required: true },
       district: { type: String, required: true },
+      city: { type: String, required: true },
       number: { type: String, required: true },
       state: { type: String, required: true },
       country: { type: String, required: true }
     },
     maps: {
       lat: Number,
-      lon: Number
+      lng: Number
     }
   },
   {

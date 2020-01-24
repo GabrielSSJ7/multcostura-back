@@ -1,12 +1,12 @@
-import 'dotenv/config'
-import ModelCategories from '../database/mongo/models/categories';
-import mongoose from 'mongoose';
-import path from 'path';
-import fs from 'fs';
+import "dotenv/config";
+import ModelCategories from "../database/mongo/models/categories";
+import mongoose from "mongoose";
+import path from "path";
+import fs from "fs";
 
 module.exports = () => ({
   async store(req, res) {
-    const {name, description} = req.query;
+    const { name, description } = req.query;
     const file = req.file;
 
     const categories = new ModelCategories();
@@ -25,15 +25,15 @@ module.exports = () => ({
         name: cat.name,
         description: cat.description,
         created_at: cat.created_at,
-        appIcon: `${process.env.STATIC_FILES_URL}icons/categories/${cat.appIcon}`,
+        appIcon: `${process.env.STATIC_FILES_URL}icons/categories/${cat.appIcon}`
       };
     });
     return res.json(resCategorties);
   },
   async show(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
     const category = await ModelCategories.findById(
-      mongoose.Types.ObjectId(id),
+      mongoose.Types.ObjectId(id)
     );
     if (category)
       return res.json({
@@ -44,58 +44,66 @@ module.exports = () => ({
           ...category.banner,
           image: category.banner.image
             ? `${process.env.STATIC_FILES_URL}banner/categories${category.banner.image}`
-            : null,
+            : null
         },
-        createdAt: category.createdAt,
+        createdAt: category.createdAt
       });
-    return res.status(404).send('Categoria não encontrada');
+    return res.status(404).send("Categoria não encontrada");
   },
   async update(req, res) {
-    const {id} = req.params;
-    const {name, description} = req.query;
-    const categories = await ModelCategories.findById(id);
-    if (categories) {
-      categories.name = name;
-      categories.description = description;
-      console.log('file in update => ', req.file);
-      const file =
-        path.join(__dirname, '../../dist') +
-        '/icons/categories/' +
-        categories.appIcon;
+    try {
+      const { id } = req.params;
+      const { name, description } = req.query;
+      const categories = await ModelCategories.findById(id);
+      if (categories) {
+        categories.name = name;
+        categories.description = description;
+        const file =
+          path.join(__dirname, "../../dist") +
+          "/icons/categories/" +
+          categories.appIcon;
 
-      if (fs.existsSync(file)) {
-        if (req.file) {
-          fs.unlinkSync(file);
-          categories.appIcon = req.file.filename;
-          console.log('App icon changed true => ', categories.appIcon);
+        if (fs.existsSync(file)) {
+          if (req.file) {
+            fs.unlinkSync(file);
+            categories.appIcon = req.file.filename;
+          }
+        } else {
+          if (req.file) {
+            categories.appIcon = req.file.filename;
+            console.log("App icon changed => ", categories.appIcon);
+          }
         }
+
+        const responseCategories = await categories.save();
+        return res.json(responseCategories);
       } else {
-        if (req.file) {
-          categories.appIcon = req.file.filename;
-          console.log('App icon changed => ', categories.appIcon);
-        }
+        return res.status(400).send(`ID ${id} não encontrado`);
       }
-
-      const responseCategories = await categories.save();
-      return res.json(responseCategories);
-    } else {
-      return res.status(400).send(`ID ${id} não encontrado`);
+    } catch (e) {
+      return res.status(400).send(e.toString());
     }
   },
   async delete(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
     const category = await ModelCategories.findById(id);
-    const file =
-      path.join(__dirname, '../../dist') +
-      '/icons/categories/' +
-      category.appIcon;
+    if (category) {
+      if (category.appIcon) {
+        const file =
+          path.join(__dirname, "../../dist") +
+          "/icons/categories/" +
+          category.appIcon;
 
-    if (fs.existsSync(file)) {
-      fs.unlinkSync(file);
+        if (fs.existsSync(file)) {
+          fs.unlinkSync(file);
+        }
+      }
+      ModelCategories.deleteOne({ _id: id }, function(err) {
+        if (err) return res.status(500).send(err);
+        return res.sendStatus(200);
+      });
+    } else {
+      return res.status(400).send("Categoria não encontrada");
     }
-    ModelCategories.deleteOne({_id: id}, function(err) {
-      if (err) return res.status(500).send(err);
-      return res.sendStatus(200);
-    });
-  },
+  }
 });

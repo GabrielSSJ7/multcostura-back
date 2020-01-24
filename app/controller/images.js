@@ -23,14 +23,14 @@ module.exports = () => ({
     );
     try {
       if (fs.existsSync(folderPath)) {
-				const imagesFolder = fs.readdirSync(folderPath)
-				let imageToDelete = ''
-					imagesFolder.forEach(img => { 
-					const nImg = img.split(".")
-					if (image == nImg[0]) {
-						imageToDelete = img
-					}
-				})
+        const imagesFolder = fs.readdirSync(folderPath);
+        let imageToDelete = "";
+        imagesFolder.forEach(img => {
+          const nImg = img.split(".");
+          if (image == nImg[0]) {
+            imageToDelete = img;
+          }
+        });
         fs.unlinkSync(folderPath + imageToDelete);
       }
       const machine = await ModelMachine.findById(id);
@@ -54,7 +54,7 @@ module.exports = () => ({
           });
           break;
         case "sewingType":
-          machine.sewing = null;
+          machine.sewingType = null;
           break;
       }
       await machine.save();

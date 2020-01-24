@@ -52,7 +52,7 @@ module.exports = app => ({
     }
   },
   async update(req, res) {
-    const {id, show} = req.params;
+    const {id, } = req.body;
     try {
       const categoria = await ModelCategoria.findById(
         mongoose.Types.ObjectId(id),
