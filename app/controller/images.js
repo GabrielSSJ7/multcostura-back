@@ -24,13 +24,18 @@ module.exports = () => ({
     try {
       if (fs.existsSync(folderPath)) {
         const imagesFolder = fs.readdirSync(folderPath);
+        console.log("imagesFolder -> ", imagesFolder);
+        
         let imageToDelete = "";
         imagesFolder.forEach(img => {
           const nImg = img.split(".");
+          console.log(image, "==", nImg[0])
           if (image == nImg[0]) {
             imageToDelete = img;
           }
         });
+        console.log("imageToDelete => ", imageToDelete)
+        console.log("FOLDER PATH => ", folderPath + imageToDelete);
         fs.unlinkSync(folderPath + imageToDelete);
       }
       const machine = await ModelMachine.findById(id);
@@ -60,7 +65,8 @@ module.exports = () => ({
       await machine.save();
       return res.status(200).json(machine);
     } catch (err) {
-      res.status(500).json(err);
+      console.log("ERR => ",err)
+      return res.status(500).json(err);
     }
   }
 });

@@ -22,12 +22,11 @@ module.exports = {
         const filesFolder = fs.readdirSync(`${filePath}${id}`);
         if (filesFolder.length > 0)
           filesFolder.forEach(img => {
-            console.log('img => ', img);
             files[typeFiles].forEach(file => {
-              console.log('file => ', file);
               const originalname = file.originalname;
               const _originalname = file.originalname.split('.');
               const fileFolderName = img.split('.');
+              console.log(fileFolderName[0], _originalname[0])
               if (fileFolderName[0] == _originalname[0]) {
                 fs.unlinkSync(`${filePath}${id}/${img}`);
                 fs.writeFileSync(
@@ -44,8 +43,6 @@ module.exports = {
           });
         else
           files[typeFiles].forEach(file => {
-            console.log('file => ', file);
-
             const originalname = file.originalname;
             fs.writeFileSync(`${filePath}${id}/${originalname}`, file.buffer);
           });
