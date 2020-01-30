@@ -95,7 +95,7 @@ module.exports = gl => {
 
   gl.route("/images").delete(images.delete);
   gl.route("/banner").post(
-    multer({ store: memoryStorage }).array("img", 6),
+    multer({ store: memoryStorage }).array("img", 10),
     banner.store
   );
   gl.route("/banner/:id/:show").put(

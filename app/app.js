@@ -32,6 +32,9 @@ class App {
     fs.mkdirSync(pathDist + "icons/manufacturer/", { recursive: true });
     //Creating logos manufacturer folder
     fs.mkdirSync(pathDist + "logos/manufacturer/", { recursive: true });
+    //Creating banner folder
+    fs.mkdirSync(pathDist + "banners/categories/", { recursive: true });
+    fs.mkdirSync(pathDist + "banners/home/", { recursive: true });
   }
 
   configs() {
