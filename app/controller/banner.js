@@ -5,18 +5,19 @@ import path from "path";
 
 module.exports = app => ({
   async store(req, res) {
-    const { img, title, description, txtBtn, link, show, id } = req.body;
+    const { images: imagesBody, id } = req.body;
     const files = req.files;
-    console.log(__dirname);
+    console.log("images body ", imagesBody);
 
     try {
       const categoria = await ModelCategoria.findById(
         mongoose.Types.ObjectId(id)
       );
       if (!categoria) throw { status: 400, msg: "Categoria não encontrada" };
+      if (!imagesBody)
+        throw { status: 400, msg: "Ocorreu um erro, contate o suporte" };
+      const images = JSON.parse(imagesBody);
 
-      if (files.length == 0)
-        return res.status(400).send("Nenhuma imagem enviada");
       const bannerFolderPath = path.join(
         __dirname,
         "../../dist/banners/categories/" + id
@@ -24,16 +25,43 @@ module.exports = app => ({
       if (!fs.existsSync(bannerFolderPath))
         fs.mkdirSync(bannerFolderPath, { recursive: true });
 
-      const filesBannerFolder = fs.readFileSync(bannerFolderPath);
+      const filesBannerFolder = fs.readdirSync(bannerFolderPath);
 
-      console.log("==>",filesBannerFolder);
-      
+      if (filesBannerFolder.length > 0) {
+        if (categoria.bannerImages.length > 0) {
+          categoria.bannerImages.forEach(cb => {
+            if (!images.map(img => img.pos).includes(cb.pos)) {
+              if (fs.existsSync(bannerFolderPath + "/" + cb.image))
+                fs.unlinkSync(bannerFolderPath + "/" + cb.image);
+            } else {
+              if (images[cb.pos].name != cb.image) {
+                if (fs.existsSync(bannerFolderPath + "/" + cb.image))
+                  fs.unlinkSync(bannerFolderPath + "/" + cb.image);
+              }
+            }
+          });
+        }
+      }
+      console.log(images);
+
+      categoria.bannerImages = images.map(img => ({
+        image: `${img.name}`,
+        pos: img.pos
+      }));
 
       await categoria.save();
+
+      files.forEach(file => {
+        fs.writeFileSync(
+          bannerFolderPath + "/" + file.originalname,
+          file.buffer
+        );
+      });
+
       return res.status(200).json(categoria);
     } catch (e) {
       console.log(e);
-      
+
       return res.status(e.status).send(e.msg);
     }
   },
