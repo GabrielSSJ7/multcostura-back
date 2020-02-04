@@ -98,6 +98,14 @@ module.exports = () => ({
           fs.unlinkSync(file);
         }
       }
+
+      const bannersFolder = path.join(
+        __dirname,
+        "../../dist/banners/categories/" + id
+      );
+
+      fs.rmdirSync(bannersFolder, { recursive: true });
+
       ModelCategories.deleteOne({ _id: id }, function(err) {
         if (err) return res.status(500).send(err);
         return res.sendStatus(200);

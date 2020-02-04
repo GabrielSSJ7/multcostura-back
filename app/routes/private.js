@@ -1,6 +1,8 @@
 import multer from "multer";
 import path from "path";
 import { getLatAndLonByAddress } from "../utils/maps";
+import institutional from "../controller/institutional";
+
 module.exports = gl => {
   const {
     categories,
@@ -10,6 +12,7 @@ module.exports = gl => {
     images,
     banner
   } = gl.app.controller;
+
   gl.route("/categories")
     .post(
       multer({ storage: categoriesStorage }).single("icon"),
@@ -102,6 +105,14 @@ module.exports = gl => {
     multer({ store: memoryStorage }).array("img", 6),
     banner.update
   );
+
+  gl.route("/institutional").post(
+    multer({ store: memoryStorage }).array("img", 6),
+    institutional.store
+  );
+
+  gl.route("/institutional/:type").delete(institutional.delete);
+
   /* gl.route("/geocoding").get(function(req, res) {
     
   }); */

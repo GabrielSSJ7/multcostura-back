@@ -1,69 +1,40 @@
 import ModelCategoria from "../database/mongo/models/categories";
 import mongoose from "mongoose";
-import fs from "fs";
-import path from "path";
+import Categories from "../utils/categories";
+import Institutional from "../utils/institutional";
 
 module.exports = app => ({
   async store(req, res) {
-    const { images: imagesBody, id } = req.body;
+    const { images: imagesBody, id, type } = req.body;
     const files = req.files;
-    console.log("images body ", imagesBody);
+    let response = {};
+    switch (type) {
+      case "categories":
+        // eslint-disable-next-line no-case-declarations
+        const categories = new Categories(id);
+        response = await categories.saveSlide(files, imagesBody);
+        return res.status(response.status).json(response.msg);
 
-    try {
-      const categoria = await ModelCategoria.findById(
-        mongoose.Types.ObjectId(id)
-      );
-      if (!categoria) throw { status: 400, msg: "Categoria não encontrada" };
-      if (!imagesBody)
-        throw { status: 400, msg: "Ocorreu um erro, contate o suporte" };
-      const images = JSON.parse(imagesBody);
+      case "homeBanners":
+        // eslint-disable-next-line no-case-declarations
+        const institutional = new Institutional();
+        response = await institutional.saveSlideHome(files, imagesBody);
+        return res.status(response.status).json(response.msg);
 
-      const bannerFolderPath = path.join(
-        __dirname,
-        "../../dist/banners/categories/" + id
-      );
-      if (!fs.existsSync(bannerFolderPath))
-        fs.mkdirSync(bannerFolderPath, { recursive: true });
-
-      const filesBannerFolder = fs.readdirSync(bannerFolderPath);
-
-      if (filesBannerFolder.length > 0) {
-        if (categoria.bannerImages.length > 0) {
-          categoria.bannerImages.forEach(cb => {
-            if (!images.map(img => img.pos).includes(cb.pos)) {
-              if (fs.existsSync(bannerFolderPath + "/" + cb.image))
-                fs.unlinkSync(bannerFolderPath + "/" + cb.image);
-            } else {
-              if (images[cb.pos].name != cb.image) {
-                if (fs.existsSync(bannerFolderPath + "/" + cb.image))
-                  fs.unlinkSync(bannerFolderPath + "/" + cb.image);
-              }
-            }
-          });
-        }
-      }
-      console.log(images);
-
-      categoria.bannerImages = images.map(img => ({
-        image: `${img.name}`,
-        pos: img.pos
-      }));
-
-      await categoria.save();
-
-      files.forEach(file => {
-        fs.writeFileSync(
-          bannerFolderPath + "/" + file.originalname,
-          file.buffer
-        );
-      });
-
-      return res.status(200).json(categoria);
-    } catch (e) {
-      console.log(e);
-
-      return res.status(e.status).send(e.msg);
+      default:
+        return;
     }
+  },
+  async index(req, res) {
+    const { id } = req.params;
+
+    const banners = await ModelCategoria.findById(id);
+    const bannerImages = banners.bannerImages.map(banner => ({
+      pos: banner.pos,
+      name: banner.image,
+      image: `${process.env.STATIC_FILES_URL}banners/categories/${id}/${banner.image}`
+    }));
+    return res.json(bannerImages);
   },
   async update(req, res) {
     const { id } = req.body;
