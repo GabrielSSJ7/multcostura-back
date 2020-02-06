@@ -2,6 +2,8 @@ import multer from "multer";
 import path from "path";
 import { getLatAndLonByAddress } from "../utils/maps";
 import institutional from "../controller/institutional";
+import gallery from "../controller/gallery";
+import news from "../controller/news";
 
 module.exports = gl => {
   const {
@@ -113,9 +115,17 @@ module.exports = gl => {
 
   gl.route("/institutional/:type").delete(institutional.delete);
 
-  /* gl.route("/geocoding").get(function(req, res) {
-    
-  }); */
+  gl.route("/news").post(news.store);
+
+  gl.route("/news/:id")
+    .put(news.update)
+    .delete(news.del);
+
+  gl.route("/gallery").post(
+    multer({ storage: memoryStorage }).single("img"),
+    gallery.store
+  );
+  gl.route("/gallery/:id").delete(gallery.delete);
 };
 
 const memoryStorage = multer.memoryStorage();

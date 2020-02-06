@@ -8,11 +8,18 @@ var News = new mongoose.Schema(
     date: String,
     description: String,
     image: String,
-    gallery: [
-      {
-        type: String
-      }
-    ]
+    gallery: {
+      images: [
+        {
+          type: Array
+        }
+      ],
+      videos: [
+        {
+          type: Array
+        }
+      ]
+    }
   },
   {
     collection: "news",

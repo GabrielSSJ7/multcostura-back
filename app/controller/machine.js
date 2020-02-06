@@ -102,8 +102,6 @@ module.exports = () => ({
   },
   async index(req, res) {
     const { manufacturer, category, search } = req.query;
-    console.log("1query =", req.query);
-    
     
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
