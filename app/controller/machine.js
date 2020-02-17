@@ -101,25 +101,25 @@ module.exports = () => ({
     return res.json(machineCreated);
   },
   async index(req, res) {
-    const { manufacturer, category, search } = req.query;
-    
+    const { manufacturer, categories, search } = req.query;
+    console.log(req.query)
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
-      if (category && category != "undefined" && category != "null") {
+      if (categories && categories != "undefined" && categories != "null") {
         filter = [{
-          "category": mongoose.Types.ObjectId(category) },
+          "category": categories },
           { "manufacturer": mongoose.Types.ObjectId(manufacturer) }
         ];
       } else {
         filter = [{ "manufacturer": mongoose.Types.ObjectId(manufacturer) }];
       }
-    } else if (category && category != "undefined" && category != "null")
-      filter = [{ category: mongoose.Types.ObjectId(category) }];
+    } else if (categories && categories != "undefined" && categories != "null")
+      filter = [{ category: mongoose.Types.ObjectId(categories) }];
 
       if (search && search != "undefined" && search != "null")
         filter = [...filter, { name: new RegExp("^" + search, "gi") }]
 
-      console.log("FILTER => ",filter)
+    console.log("FILTER => ",filter)
     const machines = await ModelMachine.find({ $and: filter }).populate('category').populate('manufacturer');
     if (machines.length > 0) {
       const responseMachines = machines.map(machine => {
@@ -155,13 +155,9 @@ module.exports = () => ({
     const { id } = req.params;
 
     // const machine = await ModelMachine.findById(id);
-    let machine = await ModelMachine.aggregate([
-      {
-        $match: id ? { _id: mongoose.Types.ObjectId(id) } : {}
-      }
-    ]);
+    let machine = await ModelMachine.findById(mongoose.Types.ObjectId(id)).populate('category');
+    console.log("machine ", machine)
     if (machine) {
-      machine = machine[0];
       return res.json({
         id: machine._id,
         name: machine.name,
@@ -212,6 +208,8 @@ module.exports = () => ({
       });
       if (!fail.return)
         return res.status(400).send(`${fail.message} ${fail.field}`);
+
+      console.log("machine", machine)
       machine.video = video;
       machine.name = name;
       machine.manufacturer = manufacturer;

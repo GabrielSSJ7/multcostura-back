@@ -46,8 +46,12 @@ module.exports = app => ({
       return res.json({
         name: manufacturer.name,
         description: manufacturer.description,
-        appIcon: manufacturer.appIcon ? manufacturer.appIcon : null,
-        logo: manufacturer.logo ? manufacturer.logo : null,
+        appIcon: manufacturer.appIcon
+          ? `${process.env.STATIC_FILES_URL}icons/manufacturer/${manufacturer.appIcon}`
+          : null,
+        logo: manufacturer.logo
+          ? `${process.env.STATIC_FILES_URL}logos/manufacturer/${manufacturer.logo}`
+          : null,
         createdAt: manufacturer.createdAt
       });
     } else {

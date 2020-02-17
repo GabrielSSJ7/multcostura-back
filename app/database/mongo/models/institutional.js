@@ -10,7 +10,10 @@ var Institutional = new mongoose.Schema(
     ],
     enterpriseBanner: String,
     contactBanner: String,
-    newsBanner: String
+    newsBanner: String,    
+    produtos: String,
+    pecas: String,
+    noticias: String
   },
   {
     collection: "institutional",

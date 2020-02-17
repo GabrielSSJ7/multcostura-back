@@ -1,11 +1,13 @@
 import fs from "fs";
 import path from "path";
 import ModelMachine from "../database/mongo/models/machine";
+import ModelTools from '../database/mongo/models/tools'
 
 module.exports = () => ({
   async delete(req, res) {
     const { id, type, image } = req.query;
     let finalPath = "";
+    let _folder = "machines"
     switch (type) {
       case "machine":
         finalPath = "images";
@@ -16,15 +18,18 @@ module.exports = () => ({
       case "sewingType":
         finalPath = "sewing_type";
         break;
+
+      case "tools":
+        finalPath = "images"
+        _folder = "tools"
     }
     const folderPath = path.join(
       __dirname,
-      `../../dist/machines/${finalPath}/${id}/`
+      `../../dist/${_folder}/${finalPath}/${id}/`
     );
     try {
       if (fs.existsSync(folderPath)) {
         const imagesFolder = fs.readdirSync(folderPath);
-        console.log("imagesFolder -> ", imagesFolder);
         
         let imageToDelete = "";
         imagesFolder.forEach(img => {
@@ -39,6 +44,7 @@ module.exports = () => ({
         fs.unlinkSync(folderPath + imageToDelete);
       }
       const machine = await ModelMachine.findById(id);
+      const tool = await ModelTools.findById(id)
       switch (type) {
         case "machine":
           machine.images.forEach((item, index) => {
@@ -61,11 +67,24 @@ module.exports = () => ({
         case "sewingType":
           machine.sewingType = null;
           break;
+
+        case "tools":
+          tool.images.forEach((item, index) => {
+            let arrNameDbImage = item.split("/");
+            let nameDbImage = arrNameDbImage[arrNameDbImage.length - 1];
+            let arrName = nameDbImage.split(".");
+            if (image == arrName[0]) tool.images.splice(index, 1);
+          });
+        break;
+
       }
-      await machine.save();
-      return res.status(200).json(machine);
+      if (tool)
+        await tool.save();
+      if (machine)
+        await machine.save();
+      return res.status(200).json(_folder == "machines" ? machine : tool);
     } catch (err) {
-      console.log("ERR => ",err)
+      console.log(err)
       return res.status(500).json(err);
     }
   }

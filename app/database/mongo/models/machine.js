@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 var Machine = new mongoose.Schema(
-  {
+   {
     name: {
       type: String,
       required: true
@@ -16,8 +16,8 @@ var Machine = new mongoose.Schema(
       web: Boolean
     },
     images: [],
-		productRef: [],
-		sewingType: "",
+    productRef: [],
+    sewingType: "",
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "categories",

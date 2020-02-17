@@ -4,6 +4,7 @@ import { getLatAndLonByAddress } from "../utils/maps";
 import institutional from "../controller/institutional";
 import gallery from "../controller/gallery";
 import news from "../controller/news";
+import tools from '../controller/tools'
 
 module.exports = gl => {
   const {
@@ -20,9 +21,9 @@ module.exports = gl => {
       multer({ storage: categoriesStorage }).single("icon"),
       categories.store
     )
-    .get(categories.index);
+    
   gl.route("/categories/:id")
-    .get(categories.show)
+   
     .put(
       multer({ storage: categoriesStorage }).single("icon"),
       categories.update
@@ -37,7 +38,7 @@ module.exports = gl => {
       ]),
       manufacturer.store
     )
-    .get(manufacturer.index);
+    
   gl.route("/manufacturer/:id")
     .get(manufacturer.show)
     .delete(manufacturer.delete)
@@ -51,7 +52,7 @@ module.exports = gl => {
 
   gl.route("/reseller")
     .post(reseller.store)
-    .get(reseller.index);
+  
   gl.route("/reseller/:id")
     .get(reseller.show)
     .put(reseller.update)
@@ -75,10 +76,9 @@ module.exports = gl => {
       ]),
       machine.store
     )
-    .get(machine.index);
+    
 
   gl.route("/machine/:id")
-    .get(machine.show)
     .put(
       multer({ storage: machineStorage }).fields([
         {
@@ -126,6 +126,14 @@ module.exports = gl => {
     gallery.store
   );
   gl.route("/gallery/:id").delete(gallery.delete);
+  gl.route("/tools").post(
+    multer({ store: memoryStorage }).array("toolsFiles", 6), tools.store
+  )
+  gl.route("/tools/:id")
+    .delete(tools.delete )
+    .put(
+      multer({ store: memoryStorage }).array("toolsFiles", 6), tools.update
+    )
 };
 
 const memoryStorage = multer.memoryStorage();

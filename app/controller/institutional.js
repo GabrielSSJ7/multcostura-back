@@ -23,6 +23,18 @@ module.exports = {
         response = await institutional.saveBanner(type, files[0]);
         return res.status(response.status).json(response.msg);
 
+      case "produtos":
+        response = await institutional.saveBanner(type, files[0])
+        return res.status(response.status).json(response.msg);
+
+      case "pecas":
+        response = await institutional.saveBanner(type, files[0])
+        return res.status(response.status).json(response.msg);
+
+      case "noticias":
+        response = await institutional.saveBanner(type, files[0])
+        return res.status(response.status).json(response.msg);
+
       default:
         return;
     }
