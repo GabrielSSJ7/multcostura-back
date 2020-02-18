@@ -4,7 +4,7 @@ import gallery from "../controller/gallery";
 import tools from '../controller/tools';
 
 module.exports = gl => {
-  const { user, banner, categories, manufacturer, reseller, machine } = gl.app.controller;
+  const { user, banner, categories, manufacturer, reseller, machine } = gl.controller;
 
   gl.route("/user").post(user.store);
   gl.route("/user/auth").post(user.show);

@@ -14,7 +14,7 @@ module.exports = gl => {
     machine,
     images,
     banner
-  } = gl.app.controller;
+  } = gl.controller;
 
   gl.route("/categories")
     .post(
