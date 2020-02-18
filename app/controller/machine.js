@@ -119,7 +119,6 @@ module.exports = () => ({
       if (search && search != "undefined" && search != "null")
         filter = [...filter, { name: new RegExp("^" + search, "gi") }]
 
-    console.log("FILTER => ",filter)
     const machines = await ModelMachine.find({ $and: filter }).populate('category').populate('manufacturer');
     if (machines.length > 0) {
       const responseMachines = machines.map(machine => {
