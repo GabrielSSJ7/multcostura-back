@@ -4,7 +4,8 @@
   "main": "./app/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./app/index.js ",
-    "babel": "babel-node ./app/index.js"
+    "babel": "babel-node ./app/index.js",
+    "heroku-postbuild": "npm install"
   },
   "license": "MIT",
   "dependencies": {
@@ -34,5 +35,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "eslint": "^6.7.0"
+  },
+  "engines": {
+    "node": "12.14.1"
   }
 }
