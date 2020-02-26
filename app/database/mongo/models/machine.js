@@ -11,10 +11,6 @@ var Machine = new mongoose.Schema(
       required: true
     },
     description: String,
-    video: {
-      link: String,
-      web: Boolean
-    },
     images: [],
     productRef: [],
     sewingType: "",
@@ -22,6 +18,11 @@ var Machine = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "categories",
       required: true
+    },
+    video: String,
+    files: {
+      manual: String,
+      folheto: String
     },
     mainFeatures: String,
     specifications: {}

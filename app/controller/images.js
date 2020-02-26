@@ -22,6 +22,15 @@ module.exports = () => ({
       case "tools":
         finalPath = "images"
         _folder = "tools"
+        break;
+
+      case "folheto":
+        finalPath = "folheto"
+        break;
+
+      case "manual":
+        finalPath = "manual"
+        break;
     }
     const folderPath = path.join(
       __dirname,
@@ -67,6 +76,14 @@ module.exports = () => ({
         case "sewingType":
           machine.sewingType = null;
           break;
+
+        case "folheto":
+          machine.files.folheto = null;
+          break;
+
+          case "manual":
+            machine.files.manual = null;
+          break;          
 
         case "tools":
           tool.images.forEach((item, index) => {

@@ -18,10 +18,20 @@ module.exports = {
         case 'tools':
           filePath = path.join(__dirname, `../../dist/tools/images/`)
           break;
+        case 'folheto':
+          filePath = path.join(__dirname, `../../dist/machines/folheto/`)
+        break;
+        case 'manual':
+          filePath = path.join(__dirname, `../../dist/machines/manual/`)
+        break;
       }
+
+
       if (files[typeFiles].length > 0) {
+        console.log(filePath, id)
         if (!fs.existsSync(filePath + id))
           fs.mkdirSync(filePath + id, {recursive: true});
+
         const filesFolder = fs.readdirSync(`${filePath}${id}`);
         if (filesFolder.length > 0)
           filesFolder.forEach(img => {
