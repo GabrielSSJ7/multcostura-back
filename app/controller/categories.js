@@ -10,6 +10,7 @@ module.exports = () => ({
     const file = req.file;
 
     const categories = new ModelCategories();
+    
     categories.name = name;
     categories.description = description;
     if (file) categories.appIcon = file.filename;
