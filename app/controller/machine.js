@@ -148,8 +148,22 @@ module.exports = () => ({
     return res.json(machineCreated);
   },
   async index(req, res) {
-    const { manufacturer, categories, search } = req.query;
-    console.log(req.query)
+    const { manufacturer, categories, search, filters, order } = req.query;
+    let filtersJson = {}
+    if (filters) {
+      filtersJson = JSON.parse(filters)
+    }
+
+    let filtersParsed = {}
+    const filtersKey = Object.keys(filtersJson)
+    filtersKey.forEach(k => {
+      if (filtersJson[k]) {
+        const name = `specifications.${k}`
+        filtersParsed = {...filtersParsed, [name]: filtersJson[k] }
+      }
+    })
+
+
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
       if (categories && categories != "undefined" && categories != "null") {
@@ -166,7 +180,8 @@ module.exports = () => ({
       if (search && search != "undefined" && search != "null")
         filter = [...filter, { name: new RegExp("^" + search, "gi") }]
 
-    const machines = await ModelMachine.find({ $and: filter }).populate('category').populate('manufacturer');
+    filter = [...filter, filtersParsed]
+    const machines = await ModelMachine.find({ $and: filter }).sort(order).populate('category').populate('manufacturer');
     if (machines.length > 0) {
       const responseMachines = machines.map(machine => {
         return {

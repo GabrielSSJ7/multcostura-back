@@ -28,9 +28,46 @@ npm ERR! Failed at the multcostura-back@1.0.0 start script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 
 npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/webpeople/.npm/_logs/2020-03-12T17_56_29_538Z-debug.log
-Serving on  4000
-http://localhost:4000/dist/banners/institutional/contactBanner/c.jpg
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_02_32_842Z-debug.log
+/home/webpeople/multcostura-back/node_modules/babel-core/lib/transformation/file/index.js:558
+      throw err;
+      ^
+
+SyntaxError: /home/webpeople/multcostura-back/app/controller/machine.js: Unexpected token (153:6)
+  151 |     const { manufacturer, categories, search, filters, order } = req.query;
+  152 |     if (filters)
+> 153 |       const filtersJson = JSON.parse(filters)
+      |       ^
+  154 |     let filtersParsed = {}
+  155 |     const filtersKey = Object.keys(filtersJson)
+  156 |     filtersKey.forEach(k => {
+    at Parser.pp$5.raise (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1858:30)
+    at Parser.pp$1.parseIfStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2059:26)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1846:19)
+    at Parser.pp$1.parseBlockBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2268:21)
+    at Parser.pp$1.parseBlock (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2247:8)
+    at Parser.pp$3.parseFunctionBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4235:22)
+    at Parser.pp$3.parseMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4180:8)
+    at Parser.pp$3.parseObjectMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4097:10)
+    at Parser.pp$3.parseObjPropValue (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4140:19)
+    at Parser.pp$3.parseObj (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4048:10)
+    at Parser.pp$3.parseExprAtom (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3719:19)
+    at Parser.pp$3.parseExprSubscripts (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3494:19)
+    at Parser.pp$3.parseMaybeUnary (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3404:19) {
+  pos: 5343,
+  loc: Position { line: 153, column: 6 },
+  _babel: true,
+  codeFrame: '  151 |     const { manufacturer, categories, search, filters, order } = req.query;\n' +
+    '  152 |     if (filters)\n' +
+    '> 153 |       const filtersJson = JSON.parse(filters)\n' +
+    '      |       ^\n' +
+    '  154 |     let filtersParsed = {}\n' +
+    '  155 |     const filtersKey = Object.keys(filtersJson)\n' +
+    '  156 |     filtersKey.forEach(k => {'
+}
 
 > multcostura-back@1.0.0 start /home/webpeople/multcostura-back
 > nodemon --exec babel-node ./app/index.js 
@@ -61,8 +98,46 @@ npm ERR! Failed at the multcostura-back@1.0.0 start script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 
 npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/webpeople/.npm/_logs/2020-03-12T18_39_13_910Z-debug.log
-Serving on  4000
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_02_43_756Z-debug.log
+/home/webpeople/multcostura-back/node_modules/babel-core/lib/transformation/file/index.js:558
+      throw err;
+      ^
+
+SyntaxError: /home/webpeople/multcostura-back/app/controller/machine.js: Unexpected token (153:6)
+  151 |     const { manufacturer, categories, search, filters, order } = req.query;
+  152 |     if (filters)
+> 153 |       const filtersJson = JSON.parse(filters)
+      |       ^
+  154 |     let filtersParsed = {}
+  155 |     const filtersKey = Object.keys(filtersJson)
+  156 |     filtersKey.forEach(k => {
+    at Parser.pp$5.raise (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1858:30)
+    at Parser.pp$1.parseIfStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2059:26)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1846:19)
+    at Parser.pp$1.parseBlockBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2268:21)
+    at Parser.pp$1.parseBlock (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2247:8)
+    at Parser.pp$3.parseFunctionBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4235:22)
+    at Parser.pp$3.parseMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4180:8)
+    at Parser.pp$3.parseObjectMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4097:10)
+    at Parser.pp$3.parseObjPropValue (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4140:19)
+    at Parser.pp$3.parseObj (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4048:10)
+    at Parser.pp$3.parseExprAtom (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3719:19)
+    at Parser.pp$3.parseExprSubscripts (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3494:19)
+    at Parser.pp$3.parseMaybeUnary (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3404:19) {
+  pos: 5343,
+  loc: Position { line: 153, column: 6 },
+  _babel: true,
+  codeFrame: '  151 |     const { manufacturer, categories, search, filters, order } = req.query;\n' +
+    '  152 |     if (filters)\n' +
+    '> 153 |       const filtersJson = JSON.parse(filters)\n' +
+    '      |       ^\n' +
+    '  154 |     let filtersParsed = {}\n' +
+    '  155 |     const filtersKey = Object.keys(filtersJson)\n' +
+    '  156 |     filtersKey.forEach(k => {'
+}
 
 > multcostura-back@1.0.0 start /home/webpeople/multcostura-back
 > nodemon --exec babel-node ./app/index.js 
@@ -93,693 +168,24 @@ npm ERR! Failed at the multcostura-back@1.0.0 start script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 
 npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/webpeople/.npm/_logs/2020-03-12T19_20_53_952Z-debug.log
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_03_51_157Z-debug.log
 Serving on  4000
-00000000000
-000.000.000-00
-null
-null
-null
-null
-null
-null
-null
-null
-null
-
-> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
-> nodemon --exec babel-node ./app/index.js 
-
-[33m[nodemon] 1.19.4[39m
-[33m[nodemon] to restart at any time, enter `rs`[39m
-[33m[nodemon] watching dir(s): *.*[39m
-[33m[nodemon] watching extensions: js,mjs,json[39m
-[32m[nodemon] starting `babel-node ./app/index.js`[39m
-events.js:288
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: EBADF: bad file descriptor, read
-Emitted 'error' event on ReadStream instance at:
-    at internal/fs/streams.js:186:12
-    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
-  errno: -9,
-  code: 'EBADF',
-  syscall: 'read'
-}
-npm ERR! code ELIFECYCLE
-npm ERR! errno 1
-npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
-npm ERR! Exit status 1
-npm ERR! 
-npm ERR! Failed at the multcostura-back@1.0.0 start script.
-npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
-
-npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/webpeople/.npm/_logs/2020-03-12T19_25_03_301Z-debug.log
-Serving on  4000
-null
-null
-null
-null
-null
-null
-null
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ undefined: 'undefined' }
-{ undefined: 'undefined' }
-http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-machine  {
-  files: {
-    folheto: '/5e6a99af156e350f78d93058/LOGO PDF.pdf.pdf',
-    manual: '/5e6a99af156e350f78d93058/LOGO PDF.pdf.pdf'
-  },
-  images: [
-    '/5e6a99af156e350f78d93058/0.jpeg',
-    '/5e6a99af156e350f78d93058/1.jpeg',
-    '/5e6a99af156e350f78d93058/2.jpeg'
-  ],
-  productRef: [
-    '/5e6a99af156e350f78d93058/0.webp',
-    '/5e6a99af156e350f78d93058/1.webp',
-    '/5e6a99af156e350f78d93058/2.jpeg',
-    '/5e6a99af156e350f78d93058/3.jpeg'
-  ],
-  _id: 5e6a99af156e350f78d93058,
-  name: 'Máquina X',
-  manufacturer: 5e6a94e3156e350f78d93057,
-  description: 'MAZX -110',
-  video: 'https://www.youtube.com/embed/LEoGQU_k78k',
-  category: {
-    _id: 5e6a94a0156e350f78d93053,
-    bannerImages: [ [Object], [Object] ],
-    name: 'Lomotif',
-    description: '',
-    createdAt: 2020-03-12T19:59:28.390Z,
-    updatedAt: 2020-03-12T19:59:49.915Z,
-    __v: 2
-  },
-  mainFeatures: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.',
-  specifications: {
-    modelo: 'ZP-10',
-    alturaCalcador: '10',
-    comprimentoDoPonto: '10',
-    corteDeLinha: 'alto',
-    velocidadeMaxima: '5500',
-    motor: 'Bifásico',
-    numeroDeAgulhas: '10',
-    painelTouchScreen: 'sim',
-    tipoDeAgulha: 'grossa'
-  },
-  createdAt: 2020-03-12T20:21:03.591Z,
-  updatedAt: 2020-03-12T20:21:03.635Z,
-  __v: 1
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"alturaCalcador":"10"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"alturaCalcador":"10","comprimentoDoPonto":"10"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","modelo":"ZP-10"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"modelo":null}'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":"20","corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":"20","corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":"alto","velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"AAA","alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"AAA","alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"AAA","alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":"10","painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":"sim","tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":"grossa"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":"5500","motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-machine  {
-  images: [
-    '/5e6a9a9c156e350f78d93059/0.jpeg',
-    '/5e6a9a9c156e350f78d93059/1.jpeg',
-    '/5e6a9a9c156e350f78d93059/2.jpeg'
-  ],
-  productRef: [ '/5e6a9a9c156e350f78d93059/0.webp' ],
-  _id: 5e6a9a9c156e350f78d93059,
-  name: 'Máquina Y',
-  manufacturer: 5e6a94e3156e350f78d93057,
-  description: 'ZPA-Y',
-  video: 'https://www.youtube.com/embed/x3bfa3DZ8JM',
-  category: {
-    _id: 5e6a94a0156e350f78d93053,
-    bannerImages: [ [Object], [Object] ],
-    name: 'Lomotif',
-    description: '',
-    createdAt: 2020-03-12T19:59:28.390Z,
-    updatedAt: 2020-03-12T19:59:49.915Z,
-    __v: 2
-  },
-  mainFeatures: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.',
-  specifications: {
-    modelo: 'AAA',
-    alturaCalcador: '10',
-    comprimentoDoPonto: '20',
-    corteDeLinha: 'alto',
-    velocidadeMaxima: '5500',
-    motor: 'bi',
-    numeroDeAgulhas: '230',
-    painelTouchScreen: 'sim',
-    tipoDeAgulha: 'grossa'
-  },
-  createdAt: 2020-03-12T20:25:00.918Z,
-  updatedAt: 2020-03-12T20:25:00.928Z,
-  __v: 1
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-geocode { lat: -23.6502949999659, lng: -46.7333349999732 }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ tools: 'undefined', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-/home/webpeople/multcostura-back/dist/news/5e6a9b8e156e350f78d9305b/gallery/images/espaço-para-eventos-corporativos1584044963877.png
-/home/webpeople/multcostura-back/dist/news/5e6a9b8e156e350f78d9305b/gallery/images/banner1584044972341.png
-/home/webpeople/multcostura-back/dist/news/5e6a9b8e156e350f78d9305b/gallery/images/banner-1562831_19201584044973014.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-000.000.000-00
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-machine  {
-  images: [
-    '/5e6a9a9c156e350f78d93059/0.jpeg',
-    '/5e6a9a9c156e350f78d93059/1.jpeg',
-    '/5e6a9a9c156e350f78d93059/2.jpeg'
-  ],
-  productRef: [ '/5e6a9a9c156e350f78d93059/0.webp' ],
-  _id: 5e6a9a9c156e350f78d93059,
-  name: 'Máquina Y',
-  manufacturer: 5e6a94e3156e350f78d93057,
-  description: 'ZPA-Y',
-  video: 'https://www.youtube.com/embed/x3bfa3DZ8JM',
-  category: {
-    _id: 5e6a94a0156e350f78d93053,
-    bannerImages: [ [Object], [Object] ],
-    name: 'Lomotif',
-    description: '',
-    createdAt: 2020-03-12T19:59:28.390Z,
-    updatedAt: 2020-03-12T19:59:49.915Z,
-    __v: 2
-  },
-  mainFeatures: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.',
-  specifications: {
-    modelo: 'AAA',
-    alturaCalcador: '10',
-    comprimentoDoPonto: '20',
-    corteDeLinha: 'alto',
-    velocidadeMaxima: '5500',
-    motor: 'bi',
-    numeroDeAgulhas: '230',
-    painelTouchScreen: 'sim',
-    tipoDeAgulha: 'grossa'
-  },
-  createdAt: 2020-03-12T20:25:00.918Z,
-  updatedAt: 2020-03-12T20:25:00.928Z,
-  __v: 1
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ search: 'true', filters: '{}' }
-{ search: 'true', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-{ manufacturer: '5e6a94e3156e350f78d93057', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ search: 'true', filters: '{}' }
-{ search: 'true', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-{ undefined: 'undefined', filters: '{}' }
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-geocode { lat: -23.648221597082998, lng: -46.73167051498867 }
-http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
- 000.000.000-00
- 000.000.000-00
- 000.000.000-00
-{ categories: 'null', manufacturer: 'null', search: '' }
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/newsBanner/banner.png
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-5e6a94a0156e350f78d93053
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{ categories: '5e6a94a0156e350f78d93053', filters: '{}' }
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"Bifásico","numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":"10","painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":"230","painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":"230","painelTouchScreen":"sim","tipoDeAgulha":null}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":null,"motor":"bi","numeroDeAgulhas":"230","painelTouchScreen":"sim","tipoDeAgulha":"grossa"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":"ZP-10","alturaCalcador":"10","comprimentoDoPonto":"10","corteDeLinha":"alto","velocidadeMaxima":"5500","motor":"bi","numeroDeAgulhas":"230","painelTouchScreen":"sim","tipoDeAgulha":"grossa"}'
-}
-{
-  categories: '5e6a94a0156e350f78d93053',
-  filters: '{"modelo":null,"alturaCalcador":null,"comprimentoDoPonto":null,"corteDeLinha":null,"velocidadeMaxima":null,"motor":null,"numeroDeAgulhas":null,"painelTouchScreen":null,"tipoDeAgulha":null}'
-}
-http://187.108.207.29:4000/dist/banners/institutional/contactBanner/banner-1562831_1920.png
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
-http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
-http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
-{
-  categories: 'undefined',
-  manufacturer: 'undefined',
-  search: 'undefined'
-}
-{ categories: 'null', manufacturer: 'null', search: '' }
-machine  {
-  files: {
-    folheto: '/5e6a99af156e350f78d93058/LOGO PDF.pdf.pdf',
-    manual: '/5e6a99af156e350f78d93058/LOGO PDF.pdf.pdf'
-  },
-  images: [
-    '/5e6a99af156e350f78d93058/0.jpeg',
-    '/5e6a99af156e350f78d93058/1.jpeg',
-    '/5e6a99af156e350f78d93058/2.jpeg'
-  ],
-  productRef: [
-    '/5e6a99af156e350f78d93058/0.webp',
-    '/5e6a99af156e350f78d93058/1.webp',
-    '/5e6a99af156e350f78d93058/2.jpeg',
-    '/5e6a99af156e350f78d93058/3.jpeg'
-  ],
-  _id: 5e6a99af156e350f78d93058,
-  name: 'Máquina X',
-  manufacturer: 5e6a94e3156e350f78d93057,
-  description: 'MAZX -110',
-  video: 'https://www.youtube.com/embed/LEoGQU_k78k',
-  category: {
-    _id: 5e6a94a0156e350f78d93053,
-    bannerImages: [ [Object], [Object] ],
-    name: 'Lomotif',
-    description: '',
-    createdAt: 2020-03-12T19:59:28.390Z,
-    updatedAt: 2020-03-12T19:59:49.915Z,
-    __v: 2
-  },
-  mainFeatures: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.',
-  specifications: {
-    modelo: 'ZP-10',
-    alturaCalcador: '10',
-    comprimentoDoPonto: '10',
-    corteDeLinha: 'alto',
-    velocidadeMaxima: '5500',
-    motor: 'Bifásico',
-    numeroDeAgulhas: '10',
-    painelTouchScreen: 'sim',
-    tipoDeAgulha: 'grossa'
-  },
-  createdAt: 2020-03-12T20:21:03.591Z,
-  updatedAt: 2020-03-12T20:21:03.635Z,
-  __v: 1
-}
+(node:87676) UnhandledPromiseRejectionWarning: ReferenceError: filtersJson is not defined
+    at _callee2$ (/home/webpeople/multcostura-back/app/controller/machine.js:157:36)
+    at tryCatch (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.<computed> [as next] (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/home/webpeople/multcostura-back/node_modules/core-js/library/modules/_export.js:36:28)
+    at /home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
+    at index (/home/webpeople/multcostura-back/app/controller/machine.js:150:25)
+    at Layer.handle [as handle_request] (/home/webpeople/multcostura-back/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/webpeople/multcostura-back/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/webpeople/multcostura-back/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/webpeople/multcostura-back/node_modules/express/lib/router/layer.js:95:5)
+    at /home/webpeople/multcostura-back/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/webpeople/multcostura-back/node_modules/express/lib/router/index.js:335:12)
+(node:87676) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:87676) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
