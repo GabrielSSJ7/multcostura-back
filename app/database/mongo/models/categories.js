@@ -10,7 +10,7 @@ var Categories = new mongoose.Schema(
     bannerImages: [
       {
         link: String,
-        id: Number,
+        pos: Number,
         image: String
       }
     ]

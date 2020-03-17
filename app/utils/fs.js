@@ -15,10 +15,23 @@ module.exports = {
         case 'sewingType':
           filePath = path.join(__dirname, `../../dist/machines/sewing_type/`);
           break;
+        case 'tools':
+          filePath = path.join(__dirname, `../../dist/tools/images/`)
+          break;
+        case 'folheto':
+          filePath = path.join(__dirname, `../../dist/machines/folheto/`)
+        break;
+        case 'manual':
+          filePath = path.join(__dirname, `../../dist/machines/manual/`)
+        break;
       }
+
+
       if (files[typeFiles].length > 0) {
+        console.log(filePath, id)
         if (!fs.existsSync(filePath + id))
           fs.mkdirSync(filePath + id, {recursive: true});
+
         const filesFolder = fs.readdirSync(`${filePath}${id}`);
         if (filesFolder.length > 0)
           filesFolder.forEach(img => {
@@ -53,4 +66,43 @@ module.exports = {
     }
     return false;
   },
+
+  replaceFileTool (files, id) {
+    const filePath = path.join(__dirname, `../../dist/tools/images/`)
+    console.log(filePath + id)
+    if (!fs.existsSync(filePath + id))
+          fs.mkdirSync(filePath + id, {recursive: true});
+      const filesFolder = fs.readdirSync(`${filePath}${id}`);
+      console.log("files folder",filesFolder)
+      if (filesFolder.length > 0) {
+        filesFolder.forEach(img => {
+          files.forEach(file => {
+            console.log(file)
+            const originalname = file.originalname;
+            const _originalname = file.originalname.split('.');
+            const fileFolderName = img.split('.');
+            if (fileFolderName[0] == _originalname[0]) {
+              fs.unlinkSync(`${filePath}${id}/${img}`);
+              fs.writeFileSync(
+                `${filePath}${id}/${originalname}`,
+                file.buffer,
+              );
+            } else {
+              fs.writeFileSync(
+                `${filePath}${id}/${originalname}`,
+                file.buffer,
+              );
+            }
+          });
+        });
+      } else { 
+        files.forEach(file => {
+          const originalname = file.originalname;
+          fs.writeFileSync(`${filePath}${id}/${originalname}`, file.buffer);
+        }); 
+       
+      }
+
+      return true;
+  }
 };

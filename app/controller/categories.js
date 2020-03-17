@@ -10,6 +10,7 @@ module.exports = () => ({
     const file = req.file;
 
     const categories = new ModelCategories();
+    
     categories.name = name;
     categories.description = description;
     if (file) categories.appIcon = file.filename;
@@ -32,6 +33,7 @@ module.exports = () => ({
   },
   async show(req, res) {
     const { id } = req.params;
+    console.log(id)
     const category = await ModelCategories.findById(
       mongoose.Types.ObjectId(id)
     );
@@ -40,12 +42,12 @@ module.exports = () => ({
         name: category.name,
         description: category.description,
         appIcon: category.appIcon,
-        banner: {
-          ...category.banner,
-          image: category.banner.image
-            ? `${process.env.STATIC_FILES_URL}banner/categories${category.banner.image}`
+        bannerImages: category.bannerImages.map(b => ({
+          ...category.b,
+          image: b.image
+            ? `${process.env.STATIC_FILES_URL}banners/categories/${id}/${b.image}`
             : null
-        },
+        })),
         createdAt: category.createdAt
       });
     return res.status(404).send("Categoria não encontrada");
@@ -98,6 +100,14 @@ module.exports = () => ({
           fs.unlinkSync(file);
         }
       }
+
+      const bannersFolder = path.join(
+        __dirname,
+        "../../dist/banners/categories/" + id
+      );
+
+      fs.rmdirSync(bannersFolder, { recursive: true });
+
       ModelCategories.deleteOne({ _id: id }, function(err) {
         if (err) return res.status(500).send(err);
         return res.sendStatus(200);
