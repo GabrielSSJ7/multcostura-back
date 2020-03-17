@@ -56,7 +56,7 @@ export default {
     return res.json(toolsCreated);
   },
   async index(req, res) {
-    const { manufacturer, category, search } = req.query;
+    const { manufacturer, category, search, order } = req.query;
     
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
@@ -74,7 +74,7 @@ export default {
       if (search && search != "undefined" && search != "null")
         filter = [...filter, { name: new RegExp("^" + search, "gi") }]
 
-    const tools = await ModelTools.find({ $and: filter }).populate('category').populate('manufacturer');
+    const tools = await ModelTools.find({ $and: filter }).sort(order).populate('category').populate('manufacturer');
     if (tools.length > 0) {
       const responseTools = tools.map(tool => {
         return {
