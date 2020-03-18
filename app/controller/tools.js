@@ -57,7 +57,7 @@ export default {
   },
   async index(req, res) {
     const { manufacturer, category, search, order } = req.query;
-    
+    z
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
       if (category && category != "undefined" && category != "null") {
