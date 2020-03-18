@@ -189,3 +189,126 @@ Serving on  4000
     at Function.process_params (/home/webpeople/multcostura-back/node_modules/express/lib/router/index.js:335:12)
 (node:87676) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
 (node:87676) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_08_25_304Z-debug.log
+Serving on  4000
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_24_13_991Z-debug.log
+Serving on  4000
+46996999871
+00000000000
+000.000.000-00
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-18T13_28_38_225Z-debug.log
+Serving on  4000
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
+http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
+http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
+http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
+http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg

@@ -206,7 +206,8 @@ module.exports = () => ({
             ? `${process.env.STATIC_FILES_URL}machines/sewing_type${machine.sewingType}`
             : null,
           category: machine.category,
-          manufacturer: machine.manufacturer
+          manufacturer: machine.manufacturer,
+	  createdAt: machine.createdAt
         };
       });
       return res.json(responseMachines);

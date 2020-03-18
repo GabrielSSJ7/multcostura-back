@@ -57,8 +57,12 @@ export default {
   },
   async index(req, res) {
     const { manufacturer, category, search, order } = req.query;
-    
     let filter = [{}];
+    let orderFilter = {}
+    if (order) {
+	orderFilter = JSON.parse(order)
+    }
+
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
       if (category && category != "undefined" && category != "null") {
         filter = [{
@@ -74,7 +78,7 @@ export default {
       if (search && search != "undefined" && search != "null")
         filter = [...filter, { name: new RegExp("^" + search, "gi") }]
 
-    const tools = await ModelTools.find({ $and: filter }).sort(order).populate('category').populate('manufacturer');
+    const tools = await ModelTools.find({ $and: filter }).sort(orderFilter).populate('category').populate('manufacturer');
     if (tools.length > 0) {
       const responseTools = tools.map(tool => {
         return {
@@ -88,7 +92,8 @@ export default {
             img => `${process.env.STATIC_FILES_URL}tools/images${img}`
           ),
           category: tool.category,
-          manufacturer: tool.manufacturer
+          manufacturer: tool.manufacturer,
+	  createdAt: tool.createdAt
         };
       });
       return res.json(responseTools);
