@@ -7,6 +7,7 @@ const saltRounds = 10;
 module.exports = app => ({
   async store(req, res) {
     const { name, email, cpf, password } = req.body;
+	  console.log(req.body);
     const fail = fieldValidation({ name, email, cpf, password });
     if (!fail.return) {
       return res.status(400).send(`${fail.message} ${fail.field}`);

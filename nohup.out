@@ -1,0 +1,314 @@
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_02_32_842Z-debug.log
+/home/webpeople/multcostura-back/node_modules/babel-core/lib/transformation/file/index.js:558
+      throw err;
+      ^
+
+SyntaxError: /home/webpeople/multcostura-back/app/controller/machine.js: Unexpected token (153:6)
+  151 |     const { manufacturer, categories, search, filters, order } = req.query;
+  152 |     if (filters)
+> 153 |       const filtersJson = JSON.parse(filters)
+      |       ^
+  154 |     let filtersParsed = {}
+  155 |     const filtersKey = Object.keys(filtersJson)
+  156 |     filtersKey.forEach(k => {
+    at Parser.pp$5.raise (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1858:30)
+    at Parser.pp$1.parseIfStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2059:26)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1846:19)
+    at Parser.pp$1.parseBlockBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2268:21)
+    at Parser.pp$1.parseBlock (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2247:8)
+    at Parser.pp$3.parseFunctionBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4235:22)
+    at Parser.pp$3.parseMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4180:8)
+    at Parser.pp$3.parseObjectMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4097:10)
+    at Parser.pp$3.parseObjPropValue (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4140:19)
+    at Parser.pp$3.parseObj (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4048:10)
+    at Parser.pp$3.parseExprAtom (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3719:19)
+    at Parser.pp$3.parseExprSubscripts (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3494:19)
+    at Parser.pp$3.parseMaybeUnary (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3404:19) {
+  pos: 5343,
+  loc: Position { line: 153, column: 6 },
+  _babel: true,
+  codeFrame: '  151 |     const { manufacturer, categories, search, filters, order } = req.query;\n' +
+    '  152 |     if (filters)\n' +
+    '> 153 |       const filtersJson = JSON.parse(filters)\n' +
+    '      |       ^\n' +
+    '  154 |     let filtersParsed = {}\n' +
+    '  155 |     const filtersKey = Object.keys(filtersJson)\n' +
+    '  156 |     filtersKey.forEach(k => {'
+}
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_02_43_756Z-debug.log
+/home/webpeople/multcostura-back/node_modules/babel-core/lib/transformation/file/index.js:558
+      throw err;
+      ^
+
+SyntaxError: /home/webpeople/multcostura-back/app/controller/machine.js: Unexpected token (153:6)
+  151 |     const { manufacturer, categories, search, filters, order } = req.query;
+  152 |     if (filters)
+> 153 |       const filtersJson = JSON.parse(filters)
+      |       ^
+  154 |     let filtersParsed = {}
+  155 |     const filtersKey = Object.keys(filtersJson)
+  156 |     filtersKey.forEach(k => {
+    at Parser.pp$5.raise (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1858:30)
+    at Parser.pp$1.parseIfStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2059:26)
+    at Parser.pp$1.parseStatement (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:1846:19)
+    at Parser.pp$1.parseBlockBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2268:21)
+    at Parser.pp$1.parseBlock (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:2247:8)
+    at Parser.pp$3.parseFunctionBody (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4235:22)
+    at Parser.pp$3.parseMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4180:8)
+    at Parser.pp$3.parseObjectMethod (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4097:10)
+    at Parser.pp$3.parseObjPropValue (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4140:19)
+    at Parser.pp$3.parseObj (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:4048:10)
+    at Parser.pp$3.parseExprAtom (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3719:19)
+    at Parser.pp$3.parseExprSubscripts (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3494:19)
+    at Parser.pp$3.parseMaybeUnary (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/home/webpeople/multcostura-back/node_modules/babylon/lib/index.js:3404:19) {
+  pos: 5343,
+  loc: Position { line: 153, column: 6 },
+  _babel: true,
+  codeFrame: '  151 |     const { manufacturer, categories, search, filters, order } = req.query;\n' +
+    '  152 |     if (filters)\n' +
+    '> 153 |       const filtersJson = JSON.parse(filters)\n' +
+    '      |       ^\n' +
+    '  154 |     let filtersParsed = {}\n' +
+    '  155 |     const filtersKey = Object.keys(filtersJson)\n' +
+    '  156 |     filtersKey.forEach(k => {'
+}
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_03_51_157Z-debug.log
+Serving on  4000
+(node:87676) UnhandledPromiseRejectionWarning: ReferenceError: filtersJson is not defined
+    at _callee2$ (/home/webpeople/multcostura-back/app/controller/machine.js:157:36)
+    at tryCatch (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:62:40)
+    at Generator.invoke [as _invoke] (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:296:22)
+    at Generator.prototype.<computed> [as next] (/home/webpeople/multcostura-back/node_modules/regenerator-runtime/runtime.js:114:21)
+    at step (/home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+    at /home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+    at new Promise (<anonymous>)
+    at new F (/home/webpeople/multcostura-back/node_modules/core-js/library/modules/_export.js:36:28)
+    at /home/webpeople/multcostura-back/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
+    at index (/home/webpeople/multcostura-back/app/controller/machine.js:150:25)
+    at Layer.handle [as handle_request] (/home/webpeople/multcostura-back/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/webpeople/multcostura-back/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/webpeople/multcostura-back/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/webpeople/multcostura-back/node_modules/express/lib/router/layer.js:95:5)
+    at /home/webpeople/multcostura-back/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/webpeople/multcostura-back/node_modules/express/lib/router/index.js:335:12)
+(node:87676) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:87676) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_08_25_304Z-debug.log
+Serving on  4000
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-17T20_24_13_991Z-debug.log
+Serving on  4000
+46996999871
+00000000000
+000.000.000-00
+
+> multcostura-back@1.0.0 start /home/webpeople/multcostura-back
+> nodemon --exec babel-node ./app/index.js 
+
+[33m[nodemon] 1.19.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching dir(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `babel-node ./app/index.js`[39m
+events.js:288
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:487:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! multcostura-back@1.0.0 start: `nodemon --exec babel-node ./app/index.js `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the multcostura-back@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/webpeople/.npm/_logs/2020-03-18T13_28_38_225Z-debug.log
+Serving on  4000
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
+http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
+http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
+http://187.108.207.29:4000/dist/banners/institutional/enterpriseBanner/banner-1562831_1920.png
+http://187.108.207.29:4000/dist/banners/institutional/produtos/a.jpg
+http://187.108.207.29:4000/dist/banners/institutional/pecas/b.jpg
+http://187.108.207.29:4000/dist/banners/institutional/noticias/c.jpg
