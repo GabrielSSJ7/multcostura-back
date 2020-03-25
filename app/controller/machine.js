@@ -340,13 +340,14 @@ module.exports = () => ({
                   files.folheto[0].buffer,
                 );
               })
-          let images = [];       
-          images = fs.readdirSync(`${filePath}${id}`);
-          images.forEach(img => (images = `/${id}/${img}`));
-          machine.files.folheto = images;
+         let filesReaded = fs.readdirSync(`${filePath}${id}`);
+          let fileReaded = ''
+          filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
+          console.log(machine.files)
+          machine.files.folheto = fileReaded;
         }
       }
-
+      console.log("files.manual", files.manual)
       if (files.manual) {
         if (files.manual.length > 0) {
           const filePath = path.join(
@@ -364,18 +365,19 @@ module.exports = () => ({
                 const originalname = files.manual[0].originalname;
                 const _originalname = files.manual[0].originalname.split('.');
                 const fileFolderName = img.split('.');
-                console.log(fileFolderName[0], _originalname[0])
                 fs.unlinkSync(`${filePath}${id}/${img}`);
                 fs.writeFileSync(
                   `${filePath}${id}/${originalname}`,
                   files.manual[0].buffer,
                 );
               })
-          let images = [];
+          
          
-          images = fs.readdirSync(`${filePath}${id}`);
-          images.forEach(img => (images = `/${id}/${img}`));
-          machine.files.manual = images;
+          let filesReaded = fs.readdirSync(`${filePath}${id}`);
+          let fileReaded = ''
+          filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
+          console.log(machine.files)
+          machine.files.manual = fileReaded;
         }
       }
 
