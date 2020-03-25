@@ -57,6 +57,7 @@ export default {
   },
   async index(req, res) {
     const { manufacturer, category, search, order } = req.query;
+
     let filter = [{}];
     let orderFilter = {}
     if (order) {
