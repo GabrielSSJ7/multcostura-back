@@ -329,7 +329,7 @@ module.exports = () => ({
 
            const filesFolder = fs.readdirSync(`${filePath}${id}`);
 
-            if (filesFolder.length > 0)
+            if (filesFolder.length > 0) {
               filesFolder.forEach(img => {
                 const originalname = files.folheto[0].originalname;
                 const _originalname = files.folheto[0].originalname.split('.');
@@ -340,14 +340,21 @@ module.exports = () => ({
                   files.folheto[0].buffer,
                 );
               })
-         let filesReaded = fs.readdirSync(`${filePath}${id}`);
+	    } else {
+	    	const originalname = files.folheto[0].originalname;
+                const _originalname = files.folheto[0].originalname.split('.');
+		fs.writeFileSync(
+                  `${filePath}${id}/${originalname}`,
+                  files.folheto[0].buffer,
+                );
+
+	    }
+          let filesReaded = fs.readdirSync(`${filePath}${id}`);
           let fileReaded = ''
           filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
-          console.log(machine.files)
           machine.files.folheto = fileReaded;
         }
       }
-      console.log("files.manual", files.manual)
       if (files.manual) {
         if (files.manual.length > 0) {
           const filePath = path.join(
@@ -360,7 +367,7 @@ module.exports = () => ({
 
            const filesFolder = fs.readdirSync(`${filePath}${id}`);
 
-            if (filesFolder.length > 0)
+            if (filesFolder.length > 0) {
               filesFolder.forEach(img => {
                 const originalname = files.manual[0].originalname;
                 const _originalname = files.manual[0].originalname.split('.');
@@ -371,17 +378,25 @@ module.exports = () => ({
                   files.manual[0].buffer,
                 );
               })
+	    } else {
+	    	const originalname = files.manual[0].originalname;
+                const _originalname = files.manual[0].originalname.split('.');
+		fs.writeFileSync(
+                  `${filePath}${id}/${originalname}`,
+                  files.manual[0].buffer,
+                );
+	    }
           
          
           let filesReaded = fs.readdirSync(`${filePath}${id}`);
           let fileReaded = ''
           filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
-          console.log(machine.files)
           machine.files.manual = fileReaded;
         }
       }
 
 
+	console.log(machine.files)
       const machineReturn = await machine.save();
       return res.json(machineReturn);
     } else {
