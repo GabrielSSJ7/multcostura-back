@@ -6,9 +6,9 @@ import jwt from "jwt-simple";
 const saltRounds = 10;
 module.exports = app => ({
   async store(req, res) {
-    const { name, email, cpf, password } = req.body;
+    const { name, email, cpf, usernick, password } = req.body;
 	  console.log(req.body);
-    const fail = fieldValidation({ name, email, cpf, password });
+    const fail = fieldValidation({ usernick, password });
     if (!fail.return) {
       return res.status(400).send(`${fail.message} ${fail.field}`);
     }
@@ -16,19 +16,26 @@ module.exports = app => ({
     if (user) {
       return res.status(400).send(`Usuário ${email}, já existe`);
     }
+
+    const usernickDb = await ModelUser.findOne({ usernick })
+    if (usernick) {
+      return res.status(400).send(`Já existe um usuário com este apelido`);
+    }
+
     const passHash = await bcrypt.hash(password, saltRounds);
     const newUser = new ModelUser();
     newUser.name = name;
     newUser.cpf = cpf;
     newUser.email = email;
     newUser.password = passHash;
+    newUser.usernick = usernick
     const userSaved = await newUser.save();
     return res.json(userSaved);
   },
   async show(req, res) {
     const { login, password } = req.body;
     const user = await ModelUser.findOne({
-      $or: [{ email: login }, { cpf: login }]
+      $or: [{ email: login }, { cpf: login }, { usernick: login }]
     });
     console.log(login);
     if (!user) return res.status(400).send(`Usuário ${login} não existe`);
