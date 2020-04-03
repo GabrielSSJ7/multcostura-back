@@ -62,7 +62,7 @@ module.exports = app => ({
     const { id } = req.params;
     const { name, description } = req.query;
     const files = req.files;
-    const manufacturer = await ModelManufacturer.findById(id);
+    const manufacturer = await ModelManufacturer.findById(mongoose.Types.ObjectId(id));
     if (manufacturer) {
       manufacturer.name = name;
       manufacturer.description = description;
