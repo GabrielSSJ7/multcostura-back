@@ -7,6 +7,7 @@ var Categories = new mongoose.Schema(
     },
     appIcon: String,
     description: String,
+    position: Number,
     bannerImages: [
       {
         link: String,
