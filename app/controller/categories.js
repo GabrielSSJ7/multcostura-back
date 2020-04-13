@@ -26,6 +26,7 @@ module.exports = () => ({
         name: cat.name,
         description: cat.description,
         created_at: cat.created_at,
+        position: cat.position,
         appIcon: `${process.env.STATIC_FILES_URL}icons/categories/${cat.appIcon}`
       };
     });
@@ -55,28 +56,33 @@ module.exports = () => ({
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { name, description } = req.query;
+      const { name, description, position, oldPosition } = req.query;
+      console.log(req.query)
       const categories = await ModelCategories.findById(id);
       if (categories) {
         categories.name = name;
         categories.description = description;
-        const file =
-          path.join(__dirname, "../../dist") +
-          "/icons/categories/" +
-          categories.appIcon;
-
-        if (fs.existsSync(file)) {
-          if (req.file) {
-            fs.unlinkSync(file);
-            categories.appIcon = req.file.filename;
-          }
+        if (position && parseInt(position) >= 0 && parseInt(position) <= 8) {
+          const allCats = await ModelCategories.find()
+            let catToChange = null
+            allCats.forEach(cat => {
+              console.log(position, cat.position)
+              if (position == cat.position)
+                catToChange = cat
+            })
+            console.log("catToChange", catToChange)
+            if (catToChange) {
+              const _ = 
+                await ModelCategories.findById(catToChange._id)
+              _.position = 0
+              await _.save()
+            }
+          categories.position = position
+          await categories.save()
+          return res.json(categories)
         } else {
-          if (req.file) {
-            categories.appIcon = req.file.filename;
-            console.log("App icon changed => ", categories.appIcon);
-          }
+          return res.status(400).send('Posição informada da categoria é inválida')
         }
-
         const responseCategories = await categories.save();
         return res.json(responseCategories);
       } else {
