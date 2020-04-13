@@ -62,7 +62,7 @@ module.exports = app => ({
     const { id } = req.params;
     const { name, description } = req.query;
     const files = req.files;
-    const manufacturer = await ModelManufacturer.findById(mongoose.Types.ObjectId(id));
+    const manufacturer = await ModelManufacturer.findById(id);
     if (manufacturer) {
       manufacturer.name = name;
       manufacturer.description = description;
@@ -78,7 +78,12 @@ module.exports = app => ({
           manufacturer.appIcon = files.icon[0].filename;
         }
       } else {
-        if (files.icon) manufacturer.appIcon = files.icon[0].filename;
+	if (files) {
+        if (files.icon){ 
+	  if (files.icon.length > 0)
+     	   manufacturer.appIcon = files.icon[0].filename;
+	}
+	}
       }
 
       const fileLogo =
@@ -87,12 +92,16 @@ module.exports = app => ({
         manufacturer.logo;
 
       if (fs.existsSync(fileLogo)) {
+	if (files) {
         if (files.logo) {
           fs.unlinkSync(fileLogo);
           manufacturer.logo = manufacturer.logo = files.logo[0].filename;
         }
+	}
       } else {
-        if (files.logo) manufacturer.logo = files.logo[0].filename;
+	 if (files) {
+	        if (files.logo) manufacturer.logo = files.logo[0].filename;
+	}
       }
       // if (files.logo) manufacturer.logo = files.logo[0].filename;
       // if (files.icon) manufacturer.appIcon = files.icon[0].filename;

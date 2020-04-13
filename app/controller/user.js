@@ -12,13 +12,10 @@ module.exports = app => ({
     if (!fail.return) {
       return res.status(400).send(`${fail.message} ${fail.field}`);
     }
-    const user = await ModelUser.findOne({ $or: [{ name }, { email }] });
-    if (user) {
-      return res.status(400).send(`Usuário ${email}, já existe`);
-    }
+
 
     const usernickDb = await ModelUser.findOne({ usernick })
-    if (usernick) {
+    if (usernickDb) {
       return res.status(400).send(`Já existe um usuário com este apelido`);
     }
 
