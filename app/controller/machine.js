@@ -178,7 +178,7 @@ module.exports = () => ({
       filter = [{ category: mongoose.Types.ObjectId(categories) }];
 
       if (search && search != "undefined" && search != "null")
-        filter = [...filter, { name: new RegExp("^" + search, "gi") }]
+        filter = [...filter, { name: new RegExp("^.*" + search  , "gi") }]
 
     filter = [...filter, filtersParsed]
     const machines = await ModelMachine.find({ $and: filter }).sort(order).populate('category').populate('manufacturer');
