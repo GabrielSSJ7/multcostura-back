@@ -18,7 +18,7 @@ module.exports = app => ({
     }
 
     const usernickDb = await ModelUser.findOne({ usernick })
-    if (usernick) {
+    if (usernickDb) {
       return res.status(400).send(`Já existe um usuário com este apelido`);
     }
 
