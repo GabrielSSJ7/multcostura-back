@@ -153,7 +153,11 @@ module.exports = () => ({
     filtersKey.forEach((k) => {
       if (filtersJson[k]) {
         const name = `specifications.${k}`;
-        filtersParsed = { ...filtersParsed, [name]: filtersJson[k], hidden: false };
+        filtersParsed = {
+          ...filtersParsed,
+          [name]: filtersJson[k],
+          hidden: false,
+        };
       }
     });
 
@@ -173,7 +177,7 @@ module.exports = () => ({
       filter = [{ category: mongoose.Types.ObjectId(categories) }];
 
     if (search && search != "undefined" && search != "null")
-      filter = [...filter, { name: new RegExp("^" + search, "gi") }];
+      filter = [...filter, { name: new RegExp(search + "*", "gi") }];
 
     filter = [...filter, filtersParsed];
     const machines = await ModelMachine.find({ $and: filter })
@@ -395,7 +399,7 @@ module.exports = () => ({
           machine.files.manual = fileReaded;
         }
       }
-    
+
       const machineReturn = await machine.save();
       return res.json(machineReturn);
     } else {
