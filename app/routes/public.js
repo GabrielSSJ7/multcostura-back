@@ -3,6 +3,7 @@ import news from '../controller/news'
 import gallery from '../controller/gallery'
 import tools from '../controller/tools'
 import email from '../controller/email'
+import settings from '../controller/settings'
 
 module.exports = gl => {
   const { user, banner, categories, manufacturer, reseller, machine } = gl.app.controller
@@ -24,4 +25,5 @@ module.exports = gl => {
   gl.route('/machine').get(machine.index)
   gl.route('/machine/:id').get(machine.show)
   gl.route('/email').post(email.store)
+  gl.route('/settings').get(settings.index)
 }

@@ -25,7 +25,9 @@ var Machine = new mongoose.Schema(
       folheto: String
     },
     mainFeatures: String,
-    specifications: {}
+    specifications: {
+      
+    }
   },
   {
     collection: "machine",

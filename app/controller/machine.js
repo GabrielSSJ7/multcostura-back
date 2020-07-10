@@ -12,7 +12,7 @@ module.exports = () => ({
       productReferences: productRefFiles,
       sewingType: sewingTypeFiles,
       folheto,
-      manual
+      manual,
     } = req.files;
     // console.log("folheto", folheto)
     // console.log("manual", manual)
@@ -23,14 +23,14 @@ module.exports = () => ({
       video,
       category,
       mainFeatures,
-      specifications
+      specifications,
     } = req.body;
     const fail = fieldValidation({
       name,
       manufacturer,
       description,
       category,
-      mainFeatures
+      mainFeatures,
     });
     if (!fail.return)
       return res.status(400).send(`${fail.message} ${fail.field}`);
@@ -51,7 +51,7 @@ module.exports = () => ({
           const filePath = path.join(__dirname, "../../dist/machines/images/");
           if (!fs.existsSync(filePath + machineCreated._id + "/"))
             fs.mkdirSync(filePath + machineCreated._id + "/", {
-              recursive: true
+              recursive: true,
             });
           fs.writeFileSync(
             `${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
@@ -70,7 +70,7 @@ module.exports = () => ({
             );
             if (!fs.existsSync(filePath + machineCreated._id + "/"))
               fs.mkdirSync(filePath + machineCreated._id + "/", {
-                recursive: true
+                recursive: true,
               });
             fs.writeFileSync(
               `${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
@@ -89,7 +89,7 @@ module.exports = () => ({
             );
             if (!fs.existsSync(filePath + machineCreated._id + "/"))
               fs.mkdirSync(filePath + machineCreated._id + "/", {
-                recursive: true
+                recursive: true,
               });
             fs.writeFileSync(
               `${filePath}${machineCreated._id}/${i}.${mimeType[1]}`,
@@ -102,88 +102,86 @@ module.exports = () => ({
 
         // folheto FILE
         if (folheto) {
-            const mimeType = folheto[0].mimetype.split("/");
-            const filePath = path.join(
-              __dirname,
-              "../../dist/machines/folheto/"
-            );
-            if (!fs.existsSync(filePath + machineCreated._id + "/"))
-              fs.mkdirSync(filePath + machineCreated._id + "/", {
-                recursive: true
-              });
-            fs.writeFileSync(
-              `${filePath}${machineCreated._id}/${folheto[0].originalname}.${mimeType[1]}`,
-              folheto[0].buffer
-            );
-        
+          const mimeType = folheto[0].mimetype.split("/");
+          const filePath = path.join(__dirname, "../../dist/machines/folheto/");
+          if (!fs.existsSync(filePath + machineCreated._id + "/"))
+            fs.mkdirSync(filePath + machineCreated._id + "/", {
+              recursive: true,
+            });
+          fs.writeFileSync(
+            `${filePath}${machineCreated._id}/${folheto[0].originalname}.${mimeType[1]}`,
+            folheto[0].buffer
+          );
+
           machineCreated.files.folheto = `/${machineCreated._id}/${folheto[0].originalname}.${mimeType[1]}`;
         }
 
         // manual FILE
         if (manual) {
-            const mimeType = manual[0].mimetype.split("/");
-            const filePath = path.join(
-              __dirname,
-              "../../dist/machines/manual/"
-            );
-            if (!fs.existsSync(filePath + machineCreated._id + "/"))
-              fs.mkdirSync(filePath + machineCreated._id + "/", {
-                recursive: true
-              });
-            fs.writeFileSync(
-              `${filePath}${machineCreated._id}/${manual[0].originalname}.${mimeType[1]}`,
-              manual[0].buffer
-            );
-        
+          const mimeType = manual[0].mimetype.split("/");
+          const filePath = path.join(__dirname, "../../dist/machines/manual/");
+          if (!fs.existsSync(filePath + machineCreated._id + "/"))
+            fs.mkdirSync(filePath + machineCreated._id + "/", {
+              recursive: true,
+            });
+          fs.writeFileSync(
+            `${filePath}${machineCreated._id}/${manual[0].originalname}.${mimeType[1]}`,
+            manual[0].buffer
+          );
+
           machineCreated.files.manual = `/${machineCreated._id}/${manual[0].originalname}.${mimeType[1]}`;
         }
 
         await machineCreated.save();
       } else {
-        return res.status(400).send("É necessário subir ao menos uma imagem")
+        return res.status(400).send("É necessário subir ao menos uma imagem");
       }
     } else {
-      return res.status(400).send("É necessário subir ao menos uma imagem")
+      return res.status(400).send("É necessário subir ao menos uma imagem");
     }
     return res.json(machineCreated);
   },
   async index(req, res) {
     const { manufacturer, categories, search, filters, order } = req.query;
-    let filtersJson = {}
+    let filtersJson = {};
     if (filters) {
-      filtersJson = JSON.parse(filters)
+      filtersJson = JSON.parse(filters);
     }
 
-    let filtersParsed = {}
-    const filtersKey = Object.keys(filtersJson)
-    filtersKey.forEach(k => {
+    let filtersParsed = {};
+    const filtersKey = Object.keys(filtersJson);
+    filtersKey.forEach((k) => {
       if (filtersJson[k]) {
-        const name = `specifications.${k}`
-        filtersParsed = {...filtersParsed, [name]: filtersJson[k] }
+        const name = `specifications.${k}`;
+        filtersParsed = { ...filtersParsed, [name]: filtersJson[k], hidden: false };
       }
-    })
-
+    });
 
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
       if (categories && categories != "undefined" && categories != "null") {
-        filter = [{
-          "category": categories },
-          { "manufacturer": mongoose.Types.ObjectId(manufacturer) }
+        filter = [
+          {
+            category: categories,
+          },
+          { manufacturer: mongoose.Types.ObjectId(manufacturer) },
         ];
       } else {
-        filter = [{ "manufacturer": mongoose.Types.ObjectId(manufacturer) }];
+        filter = [{ manufacturer: mongoose.Types.ObjectId(manufacturer) }];
       }
     } else if (categories && categories != "undefined" && categories != "null")
       filter = [{ category: mongoose.Types.ObjectId(categories) }];
 
-      if (search && search != "undefined" && search != "null")
-        filter = [...filter, { name: new RegExp("^.*" + search  , "gi") }]
+    if (search && search != "undefined" && search != "null")
+      filter = [...filter, { name: new RegExp("^" + search, "gi") }];
 
-    filter = [...filter, filtersParsed]
-    const machines = await ModelMachine.find({ $and: filter }).sort(order).populate('category').populate('manufacturer');
+    filter = [...filter, filtersParsed];
+    const machines = await ModelMachine.find({ $and: filter })
+      .sort(order)
+      .populate("category")
+      .populate("manufacturer");
     if (machines.length > 0) {
-      const responseMachines = machines.map(machine => {
+      const responseMachines = machines.map((machine) => {
         return {
           id: machine._id,
           name: machine.name,
@@ -191,14 +189,18 @@ module.exports = () => ({
           mainFeatures: machine.mainFeatures,
           specifications: machine.specifications,
           video: machine.video,
-          folheto: machine.files.folheto ? `${process.env.STATIC_FILES_URL}machines/folheto${machine.files.folheto}` : null,
-          manual: machine.files.manual ? `${process.env.STATIC_FILES_URL}machines/manual${machine.files.manual}` : null,
+          folheto: machine.files.folheto
+            ? `${process.env.STATIC_FILES_URL}machines/folheto${machine.files.folheto}`
+            : null,
+          manual: machine.files.manual
+            ? `${process.env.STATIC_FILES_URL}machines/manual${machine.files.manual}`
+            : null,
           images: machine.images.map(
-            img => `${process.env.STATIC_FILES_URL}machines/images${img}`
+            (img) => `${process.env.STATIC_FILES_URL}machines/images${img}`
           ),
           productRef: machine.productRef
             ? machine.productRef.map(
-                img =>
+                (img) =>
                   `${process.env.STATIC_FILES_URL}machines/product_ref${img}`
               )
             : null,
@@ -207,7 +209,7 @@ module.exports = () => ({
             : null,
           category: machine.category,
           manufacturer: machine.manufacturer,
-	  createdAt: machine.createdAt
+          createdAt: machine.createdAt,
         };
       });
       return res.json(responseMachines);
@@ -219,8 +221,10 @@ module.exports = () => ({
     const { id } = req.params;
 
     // const machine = await ModelMachine.findById(id);
-    let machine = await ModelMachine.findById(mongoose.Types.ObjectId(id)).populate('category');
-    console.log("machine ", machine)
+    let machine = await ModelMachine.findById(
+      mongoose.Types.ObjectId(id)
+    ).populate("category");
+    console.log("machine ", machine);
     if (machine) {
       return res.json({
         id: machine._id,
@@ -229,21 +233,26 @@ module.exports = () => ({
         mainFeatures: machine.mainFeatures,
         specifications: machine.specifications,
         video: machine.video,
-        folheto: machine.files.folheto ? `${process.env.STATIC_FILES_URL}machines/folheto${machine.files.folheto}` : null,
-        manual: machine.files.manual ? `${process.env.STATIC_FILES_URL}machines/manual${machine.files.manual}` : null,
+        folheto: machine.files.folheto
+          ? `${process.env.STATIC_FILES_URL}machines/folheto${machine.files.folheto}`
+          : null,
+        manual: machine.files.manual
+          ? `${process.env.STATIC_FILES_URL}machines/manual${machine.files.manual}`
+          : null,
         images: machine.images.map(
-          img => `${process.env.STATIC_FILES_URL}machines/images${img}`
+          (img) => `${process.env.STATIC_FILES_URL}machines/images${img}`
         ),
         productRef: machine.productRef
           ? machine.productRef.map(
-              img => `${process.env.STATIC_FILES_URL}machines/product_ref${img}`
+              (img) =>
+                `${process.env.STATIC_FILES_URL}machines/product_ref${img}`
             )
           : null,
         sewingType: machine.sewingType
           ? `${process.env.STATIC_FILES_URL}machines/sewing_type${machine.sewingType}`
           : null,
         category: machine.category,
-        manufacturer: machine.manufacturer
+        manufacturer: machine.manufacturer,
       });
     } else {
       return res.status(400).send("Máquina não encontrada");
@@ -260,7 +269,7 @@ module.exports = () => ({
       mainFeatures,
       specifications,
       folheto,
-      manual
+      manual,
     } = req.body;
     const files = req.files;
 
@@ -272,7 +281,7 @@ module.exports = () => ({
         manufacturer,
         category,
         description,
-        mainFeatures
+        mainFeatures,
       });
       if (!fail.return)
         return res.status(400).send(`${fail.message} ${fail.field}`);
@@ -289,7 +298,7 @@ module.exports = () => ({
         let images = [];
         const filePath = path.join(__dirname, `../../dist/machines/images/`);
         images = fs.readdirSync(`${filePath}${id}`);
-        images = images.map(img => `/${id}/${img}`);
+        images = images.map((img) => `/${id}/${img}`);
 
         machine.images = images;
       }
@@ -301,7 +310,7 @@ module.exports = () => ({
           `../../dist/machines/product_ref/`
         );
         images = fs.readdirSync(`${filePath}${id}`);
-        images = images.map(img => `/${id}/${img}`);
+        images = images.map((img) => `/${id}/${img}`);
 
         machine.productRef = images;
       }
@@ -312,91 +321,81 @@ module.exports = () => ({
           `../../dist/machines/sewing_type/`
         );
         images = fs.readdirSync(`${filePath}${id}`);
-        images.forEach(img => (images = `/${id}/${img}`));
+        images.forEach((img) => (images = `/${id}/${img}`));
         console.log("sewing = > ", files);
         machine.sewingType = images;
       }
 
       if (files.folheto) {
         if (files.folheto.length > 0) {
-            const filePath = path.join(
-              __dirname,
-              `../../dist/machines/folheto/`
+          const filePath = path.join(__dirname, `../../dist/machines/folheto/`);
+
+          if (!fs.existsSync(filePath + id))
+            fs.mkdirSync(filePath + id, { recursive: true });
+
+          const filesFolder = fs.readdirSync(`${filePath}${id}`);
+
+          if (filesFolder.length > 0) {
+            filesFolder.forEach((img) => {
+              const originalname = files.folheto[0].originalname;
+              const _originalname = files.folheto[0].originalname.split(".");
+              const fileFolderName = img.split(".");
+              fs.unlinkSync(`${filePath}${id}/${img}`);
+              fs.writeFileSync(
+                `${filePath}${id}/${originalname}`,
+                files.folheto[0].buffer
+              );
+            });
+          } else {
+            const originalname = files.folheto[0].originalname;
+            const _originalname = files.folheto[0].originalname.split(".");
+            fs.writeFileSync(
+              `${filePath}${id}/${originalname}`,
+              files.folheto[0].buffer
             );
-
-           if (!fs.existsSync(filePath + id))
-            fs.mkdirSync(filePath + id, {recursive: true});
-
-           const filesFolder = fs.readdirSync(`${filePath}${id}`);
-
-            if (filesFolder.length > 0) {
-              filesFolder.forEach(img => {
-                const originalname = files.folheto[0].originalname;
-                const _originalname = files.folheto[0].originalname.split('.');
-                const fileFolderName = img.split('.');
-                fs.unlinkSync(`${filePath}${id}/${img}`);
-                fs.writeFileSync(
-                  `${filePath}${id}/${originalname}`,
-                  files.folheto[0].buffer,
-                );
-              })
-	    } else {
-	    	const originalname = files.folheto[0].originalname;
-                const _originalname = files.folheto[0].originalname.split('.');
-		fs.writeFileSync(
-                  `${filePath}${id}/${originalname}`,
-                  files.folheto[0].buffer,
-                );
-
-	    }
+          }
           let filesReaded = fs.readdirSync(`${filePath}${id}`);
-          let fileReaded = ''
-          filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
+          let fileReaded = "";
+          filesReaded.forEach((fl) => (fileReaded = `/${id}/${fl}`));
           machine.files.folheto = fileReaded;
         }
       }
       if (files.manual) {
         if (files.manual.length > 0) {
-          const filePath = path.join(
-            __dirname,
-            `../../dist/machines/manual/`
-          );
+          const filePath = path.join(__dirname, `../../dist/machines/manual/`);
 
-           if (!fs.existsSync(filePath + id))
-            fs.mkdirSync(filePath + id, {recursive: true});
+          if (!fs.existsSync(filePath + id))
+            fs.mkdirSync(filePath + id, { recursive: true });
 
-           const filesFolder = fs.readdirSync(`${filePath}${id}`);
+          const filesFolder = fs.readdirSync(`${filePath}${id}`);
 
-            if (filesFolder.length > 0) {
-              filesFolder.forEach(img => {
-                const originalname = files.manual[0].originalname;
-                const _originalname = files.manual[0].originalname.split('.');
-                const fileFolderName = img.split('.');
-                fs.unlinkSync(`${filePath}${id}/${img}`);
-                fs.writeFileSync(
-                  `${filePath}${id}/${originalname}`,
-                  files.manual[0].buffer,
-                );
-              })
-	    } else {
-	    	const originalname = files.manual[0].originalname;
-                const _originalname = files.manual[0].originalname.split('.');
-		fs.writeFileSync(
-                  `${filePath}${id}/${originalname}`,
-                  files.manual[0].buffer,
-                );
-	    }
-          
-         
+          if (filesFolder.length > 0) {
+            filesFolder.forEach((img) => {
+              const originalname = files.manual[0].originalname;
+              const _originalname = files.manual[0].originalname.split(".");
+              const fileFolderName = img.split(".");
+              fs.unlinkSync(`${filePath}${id}/${img}`);
+              fs.writeFileSync(
+                `${filePath}${id}/${originalname}`,
+                files.manual[0].buffer
+              );
+            });
+          } else {
+            const originalname = files.manual[0].originalname;
+            const _originalname = files.manual[0].originalname.split(".");
+            fs.writeFileSync(
+              `${filePath}${id}/${originalname}`,
+              files.manual[0].buffer
+            );
+          }
+
           let filesReaded = fs.readdirSync(`${filePath}${id}`);
-          let fileReaded = ''
-          filesReaded.forEach(fl => (fileReaded = `/${id}/${fl}`));
+          let fileReaded = "";
+          filesReaded.forEach((fl) => (fileReaded = `/${id}/${fl}`));
           machine.files.manual = fileReaded;
         }
       }
-
-
-	console.log(machine.files)
+    
       const machineReturn = await machine.save();
       return res.json(machineReturn);
     } else {
@@ -408,16 +407,16 @@ module.exports = () => ({
     if (!id) return res.status(400).send("ID não informado");
     const machine = await ModelMachine.findById(id);
     if (machine) {
-      machine.images.forEach(img => {
+      machine.images.forEach((img) => {
         const filePath = path.join(__dirname, "../../dist/machines/images");
         if (fs.existsSync(filePath + img)) {
           fs.unlinkSync(filePath + img);
         }
       });
-      ModelMachine.deleteOne({ _id: id }, function(err) {
+      ModelMachine.deleteOne({ _id: id }, function (err) {
         if (err) return res.status(500).send(err);
         return res.sendStatus(200);
       });
     }
-  }
+  },
 });
