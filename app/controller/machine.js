@@ -143,10 +143,13 @@ module.exports = () => ({
   },
   async index(req, res) {
     const { manufacturer, categories, search, filters, order } = req.query;
+    console.log("filters",filters)
     let filtersJson = {};
     if (filters) {
       filtersJson = JSON.parse(filters);
     }
+
+    console.log("filtersJson", filtersJson)
 
     let filtersParsed = {};
     const filtersKey = Object.keys(filtersJson);
@@ -155,12 +158,11 @@ module.exports = () => ({
         const name = `specifications.${k}`;
         filtersParsed = {
           ...filtersParsed,
-          [name]: filtersJson[k],
-          hidden: false,
+          [name]: filtersJson[k]
         };
       }
     });
-
+    console.log("filtersParsed", filtersParsed)
     let filter = [{}];
     if (manufacturer && manufacturer != "undefined" && manufacturer != "null") {
       if (categories && categories != "undefined" && categories != "null") {
