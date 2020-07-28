@@ -176,8 +176,10 @@ module.exports = () => ({
     } else if (categories && categories != "undefined" && categories != "null")
       filter = [{ category: mongoose.Types.ObjectId(categories) }];
 
-    if (search && search != "undefined" && search != "null")
+    if (search && search != "undefined" && search != "null") {
+	 console.log("search >>" , search)
       filter = [...filter, { name: new RegExp(search + "*", "gi") }];
+    }
 
     filter = [...filter, filtersParsed];
     const machines = await ModelMachine.find({ $and: filter })
