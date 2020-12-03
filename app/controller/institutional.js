@@ -4,6 +4,7 @@ import Institutional from "../utils/institutional";
 module.exports = {
   async store(req, res) {
     const { images: imagesBody, id, type } = req.body;
+    console.log(type);
     const files = req.files;
     const institutional = new Institutional(id);
     let response = {};
@@ -33,6 +34,11 @@ module.exports = {
 
       case "noticias":
         response = await institutional.saveBanner(type, files[0])
+        return res.status(response.status).json(response.msg);
+
+      case "bndes":
+        response = await institutional.saveBanner(type, files[0])
+        console.log("response =>", response)
         return res.status(response.status).json(response.msg);
 
       default:
