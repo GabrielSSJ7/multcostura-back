@@ -8,7 +8,7 @@ WORKDIR /usr/app
 
 COPY package*.json ./
 
-USER node
+#USER node
 
 RUN npm install && npm cache clean --force --loglevel=error
 RUN npm config set unsafe-perm true
