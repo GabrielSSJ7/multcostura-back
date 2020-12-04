@@ -7,7 +7,7 @@ export default class {
     try {
       const _institutional = await Model.find();
       const institutional = _institutional[0];
-      console.log("file -=>", file)
+    
       if (!institutional)
         throw { status: 400, msg: "ocorreu um erro tente mais tarde" };
 
