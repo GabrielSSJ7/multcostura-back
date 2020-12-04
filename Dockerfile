@@ -1,12 +1,18 @@
-FROM node:10
+FROM node:12-alpine 
 
-WORKDIR /usr/app
+RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
 
-COPY package*.json ./
-RUN npm install
+WORKDIR /home/node/app
 
-COPY . .
+COPY --chown=node:node package*.json ./
+
+USER node
+
+RUN npm install && npm cache clean --force --loglevel=error
+
+COPY --chown=node:node index.js .
+COPY --chown=node:node lib ./lib/
 
 EXPOSE 4000
 
-CMD ['nodemon', 'app/index.js']
+CMD [ "node", "index.js"]
