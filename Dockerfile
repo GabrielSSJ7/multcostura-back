@@ -1,18 +1,19 @@
-FROM node:12-alpine 
+FROM node:14
 
-RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
+RUN mkdir -p /usr/app && chmod -R 777 /usr/app
 
-WORKDIR /home/node/app
+RUN chown -Rh $user:node /usr/app
 
-COPY --chown=node:node package*.json ./
+WORKDIR /usr/app
+
+COPY package*.json ./
 
 USER node
 
 RUN npm install && npm cache clean --force --loglevel=error
-
-COPY --chown=node:node index.js .
-COPY --chown=node:node lib ./lib/
+RUN npm config set unsafe-perm true
+COPY . .
 
 EXPOSE 4000
 
-CMD [ "node", "index.js"]
+CMD [ "npm", "start"]
