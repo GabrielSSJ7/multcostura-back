@@ -4,7 +4,6 @@ import Institutional from "../utils/institutional";
 module.exports = {
   async store(req, res) {
     const { images: imagesBody, id, type } = req.body;
-    console.log(type);
     const files = req.files;
     const institutional = new Institutional(id);
     let response = {};
