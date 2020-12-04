@@ -35,6 +35,11 @@ module.exports = {
         response = await institutional.saveBanner(type, files[0])
         return res.status(response.status).json(response.msg);
 
+      case "bndes":
+        response = await institutional.saveBanner(type, files[0])
+        console.log("response =>", response)
+        return res.status(response.status).json(response.msg);
+
       default:
         return;
     }
