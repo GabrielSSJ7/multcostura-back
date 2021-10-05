@@ -40,6 +40,14 @@ class App {
   configs() {
     this.initDist();
     this.app.use(cors());
+	this.app.options('*',cors());
+var allowCrossDomain = function(req,res,next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  next();
+}
+this.app.use(allowCrossDomain);
     this.app.use(bodyParser.json());
     this.app.use("/dist", express.static(path.join(__dirname, "../dist")));
     consign({ verbose: false })
